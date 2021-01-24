@@ -1,82 +1,39 @@
 <template>
   <div class="container">
+    <button @click="updating">test</button>
     <table
       class="w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5"
     >
       <thead class="text-white">
         <tr
+          v-for="bill in bills"
+          :key="bill.id"
           class="bg-teal-500 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0"
         >
-          <th class="p-3 text-left">Name</th>
-          <th class="p-3 text-left">Email</th>
-          <th class="p-3 text-left" width="110px">Actions</th>
-        </tr>
-        <tr
-          class="bg-teal-400 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0"
-        >
-          <th class="p-3 text-left">Name</th>
-          <th class="p-3 text-left">Email</th>
-          <th class="p-3 text-left" width="110px">Actions</th>
-        </tr>
-        <tr
-          class="bg-teal-400 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0"
-        >
-          <th class="p-3 text-left">Name</th>
-          <th class="p-3 text-left">Email</th>
-          <th class="p-3 text-left" width="110px">Actions</th>
-        </tr>
-        <tr
-          class="bg-teal-400 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0"
-        >
-          <th class="p-3 text-left">Name</th>
-          <th class="p-3 text-left">Email</th>
-          <th class="p-3 text-left" width="110px">Actions</th>
+          <th class="p-3 text-left">Type</th>
+          <th class="p-3 text-left">Cost</th>
+          <th class="p-3 text-left">Date</th>
+          <th class="p-3 text-left">Descrption</th>
+          <th class="p-3 text-left" width="110px">Delete</th>
         </tr>
       </thead>
       <tbody class="flex-1 sm:flex-none">
-        <tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
+        <tr
+          v-for="bill in bills"
+          :key="bill.id"
+          class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0"
+        >
           <td class="border-grey-light border hover:bg-gray-100 p-3">
-            John Covv
+            {{ bill.type }}
           </td>
-          <td class="border-grey-light border hover:bg-gray-100 p-3 truncate">
-            contato@johncovv.com
-          </td>
-          <td
-            class="border-grey-light border hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer"
-          >
-            Delete
-          </td>
-        </tr>
-        <tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
           <td class="border-grey-light border hover:bg-gray-100 p-3">
-            Michael Jackson
+            {{ bill.cost }} $
           </td>
-          <td class="border-grey-light border hover:bg-gray-100 p-3 truncate">
-            m_jackson@mail.com
-          </td>
-          <td
-            class="border-grey-light border hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer"
-          >
-            Delete
-          </td>
-        </tr>
-        <tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
-          <td class="border-grey-light border hover:bg-gray-100 p-3">Julia</td>
-          <td class="border-grey-light border hover:bg-gray-100 p-3 truncate">
-            julia@mail.com
-          </td>
-          <td
-            class="border-grey-light border hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer"
-          >
-            Delete
-          </td>
-        </tr>
-        <tr class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0">
           <td class="border-grey-light border hover:bg-gray-100 p-3">
-            Martin Madrazo
+            {{ bill.date }}
           </td>
           <td class="border-grey-light border hover:bg-gray-100 p-3 truncate">
-            martin.madrazo@mail.com
+            {{ bill.descrption }}
           </td>
           <td
             class="border-grey-light border hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer"
@@ -86,7 +43,6 @@
         </tr>
       </tbody>
     </table>
-
 
     <div class="flex flex-col items-center my-10 ">
       <div class="flex text-gray-700">
@@ -254,9 +210,7 @@
       </div>
     </div> -->
   </div>
-  <!-- </body> -->
 
-  <!-- component -->
   <!-- <div class="container mx-auto px-4 sm:px-8">
     <div class="py-8">
       <div>
@@ -578,9 +532,26 @@
 </div> -->
 </template>
 
+<script>
+// import axios from "axios";
+import { mapGetters } from "vuex";
+export default {
+  data() {
+    return {
+      // bills: [],
+    };
+  },
+  methods: {},
+  created() {
+    this.$store.dispatch("fetchBills");
+  },
+  computed: {
+    ...mapGetters({ bills: "billList" }),
+  },
+};
+</script>
+
 <style scope="this api replaced by slot-scope in 2.5.0+">
-
-
 @media (min-width: 640px) {
   table {
     display: inline-table !important;

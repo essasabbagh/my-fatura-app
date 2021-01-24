@@ -6,9 +6,11 @@
       :options="options"
       :series="series"
     ></apexchart>
+    <pre>{{ allDate.billDate }}</pre>
   </div>
 </template>
 <script>
+import { mapGetters } from "vuex";
 export default {
   data() {
     return {
@@ -23,10 +25,22 @@ export default {
       series: [
         {
           name: "series-1",
-          data: [30, 40, 45, 50, 49, 60, 70, 77],
+          data: [30, 40, 45, 66, 49, 60, 70, 77],
         },
       ],
     };
+  },
+  created() {
+    this.$store.dispatch("fetchBills");
+  },
+  computed: {
+    ...mapGetters({ bills: "billList" }),
+    allDate() {
+      return {
+        billDate: this.bills.map(obj => new Date(obj.date).getTime())
+        
+      };
+    },
   },
 };
 </script>

@@ -2,16 +2,65 @@
   "bills": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "type": 5,
+      "cost": 102,
+      "date": "02/02/2020",
+      "descrption": "blaa"
+    },
+    {
+      "id": 2,
+      "type": 4,
+      "cost": 123,
+      "date": "02/03/2020",
+      "descrption": "blaa"
+    },
+    {
+      "id": 3,
+      "type": 1,
+      "cost": 77,
+      "date": "02/04/2020",
+      "descrption": "blaa"
+    },
+    {
+      "id": 4,
+      "type": 2,
+      "cost": 211,
+      "date": "02/05/2020",
+      "descrption": "blaa"
+    },
+    {
+      "id": 5,
+      "type": 3,
+      "cost": 99,
+      "date": "02/06/2020",
+      "descrption": "blaa"
     }
   ],
   "categories": [
     {
       "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
+      "type": "electric",
+    },
+    {
+      "id": 2,
+      "type": "water",
+    },
+    {
+      "id": 3,
+      "type": "internet",
+    },
+    {
+      "id": 4,
+      "type": "phone",
+    },
+    {
+      "id": 5,
+      "type": "gas",
+    },
+    {
+      "id": 6,
+      "type": "rent",
+    },
   ],
   "users": {
     "name": "typicode"

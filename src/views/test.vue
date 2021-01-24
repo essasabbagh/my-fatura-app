@@ -1,16 +1,16 @@
 <template>
   <div>
-    <Chart class="test"/>
+    <Chart class="test" />
   </div>
 </template>
 <script>
 import Chart from "../components/Chart";
 export default {
-  components: { Chart },
+  components: { Chart }
 };
 </script>
-<style >
-    .test {
-        height: 100px !important;
-    }
+<style>
+.test {
+  height: 100px !important;
+}
 </style>
