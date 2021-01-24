@@ -1,4 +1,6 @@
 # my-fatura-app
+It's simple app to organize bills using graphic charts
+I used Vue 3 ,apexchart , Tailwind 2 
 
 ## Project setup
 ```
