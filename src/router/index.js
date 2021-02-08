@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 import appHeader from "@/components/appHeader";
+import sideBar from "@/components/sideBar";
 
 const routes = [
   {
@@ -7,7 +8,7 @@ const routes = [
     name: "Home",
     components: {
       default: () => import("../views/Home.vue"),
-      appHeader
+      appHeader,sideBar
     }
   },
   {
@@ -15,7 +16,7 @@ const routes = [
     name: "Test",
     components: {
       default: () => import("../views/test.vue"),
-      appHeader
+      sideBar
     }
   },
   {
@@ -24,6 +25,7 @@ const routes = [
     components: {
       default: () => import("../views/About.vue"),
       appHeader
+      
     }
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route

@@ -39,28 +39,28 @@
   "categories": [
     {
       "id": 1,
-      "type": "electric",
+      "type": "electric"
     },
     {
       "id": 2,
-      "type": "water",
+      "type": "water"
     },
     {
       "id": 3,
-      "type": "internet",
+      "type": "internet"
     },
     {
       "id": 4,
-      "type": "phone",
+      "type": "phone"
     },
     {
       "id": 5,
-      "type": "gas",
+      "type": "gas"
     },
     {
       "id": 6,
-      "type": "rent",
-    },
+      "type": "rent"
+    }
   ],
   "users": {
     "name": "typicode"

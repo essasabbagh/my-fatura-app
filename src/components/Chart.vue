@@ -7,6 +7,8 @@
       :series="series"
     ></apexchart>
     <pre>{{ allDate.billDate }}</pre>
+    <pre>{{ options.xaxis.categories }}</pre>
+    <button @click="test">hi</button>
   </div>
 </template>
 <script>
@@ -30,15 +32,21 @@ export default {
       ],
     };
   },
+  methods: {
+    test() {
+      console.log("hi",this.allDate.billDate)
+      this.options.xaxis.categories = this.allDate.billDate
+    },
+  },
   created() {
     this.$store.dispatch("fetchBills");
+    this.test()
   },
   computed: {
     ...mapGetters({ bills: "billList" }),
     allDate() {
       return {
-        billDate: this.bills.map(obj => new Date(obj.date).getTime())
-        
+        billDate: this.bills.map((obj) => new Date(obj.date).getTime()),
       };
     },
   },

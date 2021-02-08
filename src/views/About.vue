@@ -1,10 +1,9 @@
 <template>
-  <!-- component -->
-  <div class="container mx-auto h-screen w-screen">
-    <div class="grid grid-cols-1 md:grid-cols-2 h-screen">
+  <div class="container">
+    <div class="grid grid-cols-1 md:grid-cols-2">
       <div class="max-h-96 md:h-screen">
         <img
-          class="w-screen h-screen object-cover object-top"
+          class="w-screen object-cover object-top"
           src="https://images.pexels.com/photos/270373/pexels-photo-270373.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
           alt=""
         />
@@ -19,9 +18,9 @@
             to improve my knowledge in these fields. I’m currently learning ...
             Vue.js
           </p>
-          <!-- <button class="bg-black rounded-md py-3 px-7 mt-6 text-white">
+          <button class="bg-black rounded-md py-3 px-7 mt-6 text-white">
             Email Me
-          </button> -->
+          </button>
           <a
             href="mailto:essasabbagh@gmail.com"
             class="block rounded-md py-3 px-7 mt-10 text-gray-700 "
@@ -32,9 +31,3 @@
     </div>
   </div>
 </template>
-<style>
-.about {
-  height: 100vh !important;
-  width: 100% !important;
-}
-</style>

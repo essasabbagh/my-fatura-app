@@ -6,7 +6,7 @@
       <li class="hover:bg-gray-100">
         <a
           href="#"
-          class="h-16 px-6 flex flex justify-center items-center w-full
+          class="h-16 px-6 flex justify-center items-center w-full hover:bg-teal-200
 					focus:text-teal-500"
         >
           <i class="fas fa-wifi"></i>
@@ -15,7 +15,7 @@
       <li class="hover:bg-gray-100">
         <a
           href="#"
-          class="h-16 px-6 flex flex justify-center items-center w-full
+          class="h-16 px-6 flex justify-center items-center w-full hover:bg-teal-200
 					focus:text-teal-500"
         >
           <i class="fas fa-bolt"></i>
@@ -24,7 +24,7 @@
       <li class="hover:bg-gray-100">
         <a
           href="#"
-          class="h-16 px-6 flex flex justify-center items-center w-full
+          class="h-16 px-6 flex justify-center items-center w-full hover:bg-teal-200
 					focus:text-teal-500"
         >
           <i class="fas fa-hand-holding-water"></i>
@@ -33,7 +33,7 @@
       <li class="hover:bg-gray-100">
         <a
           href="#"
-          class="h-16 px-6 flex flex justify-center items-center w-full
+          class="h-16 px-6 flex justify-center items-center w-full hover:bg-teal-200
 					focus:text-teal-500"
         >
           <i class="fas fa-phone"></i>
@@ -42,7 +42,7 @@
       <li class="hover:bg-gray-100">
         <a
           href="#"
-          class="h-16 px-6 flex flex justify-center items-center w-full
+          class="h-16 px-6 flex justify-center items-center w-full hover:bg-teal-200
 					focus:text-teal-500"
         >
           <i class="fas fa-shopping-cart"></i>
@@ -51,35 +51,34 @@
       <li class="hover:bg-gray-100">
         <a
           href="#"
-          class="h-16 px-6 flex flex justify-center items-center w-full
+          class="h-16 px-6 flex justify-center items-center w-full hover:bg-teal-200
 					focus:text-teal-500"
         >
           <i class="fas fa-home"></i>
         </a>
       </li>
-      <li class="hover:bg-gray-100">
+
+      <!-- <li class="hover:bg-gray-100">
         <a
           href="#"
-          class="h-16 px-6 flex flex justify-center items-center w-full
-					focus:text-teal-500"
-        >
-          <i class="fas fa-cogs"></i>
-        </a>
-      </li>
-      <li class="hover:bg-gray-100">
-        <a
-          href="#"
-          class="h-16 px-6 flex flex justify-center items-center w-full
+          class="h-16 px-6 flex justify-center items-center w-full
 					focus:text-teal-500"
         >
           <i class="fas fa-bell"></i>
         </a>
-      </li>
+      </li> -->
     </ul>
-    <div class="mt-auto h-16 flex items-center w-full">
+
+    <div class="mt-auto h-32 flex flex-col items-center w-full">
       <button
-        class="h-16 w-10 mx-auto flex flex justify-center items-center
-				w-full focus:text-red-500 hover:bg-teal-200 focus:outline-none"
+        class="h-16 w-10 mx-auto flex justify-center items-center
+				w-full focus:text-red-500 hover:bg-yellow-200 focus:outline-none"
+      >
+        <i class="fas fa-cogs"></i>
+      </button>
+      <button
+        class="h-16 w-10 mx-auto flex justify-center items-center
+				w-full focus:text-red-500 hover:bg-red-200 focus:outline-none"
       >
         <i class="fas fa-sign-out-alt"></i>
       </button>

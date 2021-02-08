@@ -1,6 +1,6 @@
 <template>
 
-  <div class="mx-4 card bg-gray-50 max-w-md p-10 md:rounded-lg my-8 mx-auto shadow-2xl ">
+  <div class="card bg-gray-50 p-10 md:rounded-lg my-8 mx-auto shadow-2xl w-1/3">
     <div class="title">
       <h1 class="font-bold text-center text-2xl">Add new bill</h1>
     </div>
