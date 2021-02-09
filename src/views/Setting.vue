@@ -1,11 +1,11 @@
 <template>
-  <div class="flex justify-start px-6 ">
+  <div class="flex justify-start  ">
     <div class="w-full xl:w-3/4 lg:w-11/12 flex">
       <div class="w-full lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none">
-        <div class="px-8 mb-5 text-left">
-          <h3 class="pt-4 text-4xl mt-5">Setting:</h3>
+        <div class="px-8  text-left">
+          <h3 class="pt-4 text-4xl">Setting:</h3>
         </div>
-        <form class="px-8 pt-6 pb-8 mb-4 bg-white rounded">
+        <form class="px-8 pt-5 pb-8 mb-4 bg-white rounded">
           <div class="mb-4">
             <label class="block mb-2 text-gray-700" for="email">
               Color
@@ -92,19 +92,20 @@
           <div class="mb-6 mt-6 text-center">
             <a
               href="/newcategory"
-              class="w-full px-4 py-2 font-bold text-white bg-yellow-500 rounded-full hover:bg-yellow-600 focus:outline-none focus:shadow-outline"
+              class="block w-full px-4 py-2 font-bold text-white bg-yellow-500 rounded-full hover:bg-yellow-600 focus:outline-none focus:shadow-outline"
               type="button"
             >
               Add New Category <i class="fas fa-external-link-alt"></i>
             </a>
+            <hr class="my-5 border-t" />
             <button
-              class="w-full px-4 py-2 mt-5 font-bold text-white bg-teal-500 rounded-full hover:bg-teal-700 focus:outline-none focus:shadow-outline"
+              class="w-full px-4 py-2 font-bold text-white bg-teal-500 rounded-full hover:bg-teal-700 focus:outline-none focus:shadow-outline"
               type="button"
             >
               Save
             </button>
           </div>
-          <hr class="mb-6 border-t" />
+          
         </form>
       </div>
     </div>
