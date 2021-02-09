@@ -8,45 +8,90 @@ const routes = [
     name: "Home",
     components: {
       default: () => import("../views/Home.vue"),
-      appHeader,sideBar
-    }
+      appHeader,
+      sideBar,
+    },
   },
   {
-    path: "/test",
-    name: "Test",
+    path: "/percentage",
+    name: "Percentage",
     components: {
-      default: () => import("../views/test.vue"),
-      sideBar
-    }
+      default: () => import("../views/Percentage.vue"),
+      appHeader,
+      sideBar,
+    },
+  },
+  {
+    path: "/year",
+    name: "Year",
+    components: {
+      default: () => import("../views/Year.vue"),
+      appHeader,
+      sideBar,
+    },
+  },
+  {
+    path: "/details",
+    name: "Details",
+    components: {
+      default: () => import("../views/Details.vue"),
+      appHeader,
+      sideBar,
+    },
+  },
+  {
+    path: "/setting",
+    name: "Setting",
+    components: {
+      default: () => import("../views/Setting.vue"),
+      appHeader,
+      sideBar,
+    },
   },
   {
     path: "/about",
     name: "About",
     components: {
       default: () => import("../views/About.vue"),
-      appHeader
-      
-    }
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    // component: () =>
-    //   import(/* webpackChunkName: "about" */ "../views/About.vue")
+    },
   },
   {
-    path: "/new",
-    name: "AddNew",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/AddNew.vue")
-  }
+    path: "/reset",
+    name: "Reset",
+    components: {
+      default: () => import("../views/Reset.vue"),
+    },
+  },
+  {
+    path: "/login",
+    name: "Login",
+    components: {
+      default: () => import("../views/Login.vue"),
+    },
+  },
+  {
+    path: "/register",
+    name: "Register",
+    components: {
+      default: () => import("../views/Register.vue"),
+    },
+  },
+  {
+    path: "/newbill",
+    name: "AddNewBill",
+    component: () => import("../views/AddNewBill.vue"),
+  },
+  {
+    path: "/newcategory",
+    name: "AddNewCategory",
+    component: () => import("../views/AddNewCategory.vue"),
+  },
 ];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
+  routes,
 });
 
 export default router;
+ 

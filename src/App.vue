@@ -1,20 +1,20 @@
 <template>
-  <div class="grid grid-rows-12 grid-cols-12 h-screen">
-    <router-view name="appHeader" class="row-span-1 col-span-full max-h-24 shadow" />
+  <div class="grid grid-rows-12 grid-cols-12 h-screen text-gray-700">
+    <router-view
+      name="appHeader"
+      class="row-span-1 col-span-full max-h-24 shadow"
+    />
     <router-view name="sideBar" class="row-span-5 col-span-1 max-w-max" />
-    <!-- <div class="col-span-12 "></div> -->
+
     <transition name="fade">
-    <router-view class="row-span-5 col-span-11 col-start-2" />
+      <router-view class="row-span-5 col-span-11 col-start-2" />
     </transition>
   </div>
-  <!-- <Alert /> -->
 </template>
 
 <script>
-// import sideBar from "@/components/sideBar";
 
 export default {
-  // components: { sideBar },
 };
 </script>
 

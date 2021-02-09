@@ -5,6 +5,7 @@
       "type": 5,
       "cost": 102,
       "date": "02/02/2020",
+      "payment": true,
       "descrption": "blaa"
     },
     {
@@ -12,6 +13,7 @@
       "type": 4,
       "cost": 123,
       "date": "02/03/2020",
+      "payment": true,
       "descrption": "blaa"
     },
     {
@@ -19,6 +21,7 @@
       "type": 1,
       "cost": 77,
       "date": "02/04/2020",
+      "payment": true,
       "descrption": "blaa"
     },
     {
@@ -26,6 +29,7 @@
       "type": 2,
       "cost": 211,
       "date": "02/05/2020",
+      "payment": true,
       "descrption": "blaa"
     },
     {
@@ -33,6 +37,31 @@
       "type": 3,
       "cost": 99,
       "date": "02/06/2020",
+      "payment": true,
+      "descrption": "blaa"
+    },
+    {
+      "id": 6,
+      "type": 3,
+      "cost": 99,
+      "date": "02/06/2020",
+      "payment": true,
+      "descrption": "blaa"
+    },
+    {
+      "id": 7,
+      "type": 3,
+      "cost": 99,
+      "date": "02/06/2020",
+      "payment": true,
+      "descrption": "blaa"
+    },
+    {
+      "id": 8,
+      "type": 3,
+      "cost": 99,
+      "date": "02/06/2020",
+      "payment": true,
       "descrption": "blaa"
     }
   ],
