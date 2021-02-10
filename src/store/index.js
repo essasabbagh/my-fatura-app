@@ -17,7 +17,7 @@ const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 const db = firebaseApp.firestore();
 const auth = firebase.auth();
-// const usersCollection = db.collection("users");
+const usersCollection = db.collection("users");
 
 export default createStore({
   state: {
@@ -64,7 +64,7 @@ export default createStore({
         .createUserWithEmailAndPassword(info.email, info.password)
         .then((cred) => {
           console.log("add user sccess!", cred);
-          db.collection("users").add({ uid: cred.user.uid, ...info });
+          usersCollection.add({ uid: cred.user.uid, ...info });
           commit("setUser", { uid: cred.user.uid });
           commit("setError", null);
         })
