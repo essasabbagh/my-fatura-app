@@ -24,7 +24,6 @@ export default createStore({
     error: null,
     bills: [],
     user: {},
-    // userInfo: { name: "", email: "", password: "" },
   },
   mutations: {
     setBills(state, pBills) {
@@ -39,12 +38,26 @@ export default createStore({
     },
     logout(state) {
       state.user = null;
-      localStorage.clear();
-      router.push({ name: "Home" });
-      // localStorage.removeItem("key")
+      localStorage.removeItem("user")
+      router.push({ name: "Login" });
     },
   },
   actions: {
+    login({ commit }, info) {
+      auth.signInWithEmailAndPassword(info.email, info.password).then(
+        (cred) => {
+          console.log(cred);
+          commit("setUser", { uid: cred.user.uid });
+          commit("setError", null);
+          router.push({ name: "Home" });
+        },
+        (err) => {
+          console.error(err);
+          commit("setError", err.message);
+        }
+      );
+    },
+
     createUser({ commit }, info) {
       // sign up the user & add firestore data
       auth
@@ -52,7 +65,7 @@ export default createStore({
         .then((cred) => {
           console.log("add user sccess!", cred);
           db.collection("users").add({ uid: cred.user.uid, ...info });
-          commit("setUser", { name: info.name, uid: cred.user.uid });
+          commit("setUser", { uid: cred.user.uid });
           commit("setError", null);
         })
         .catch((err) => {
