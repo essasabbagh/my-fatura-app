@@ -17,6 +17,23 @@
           </p> -->
         </div>
         <form class="px-8 pt-6 pb-8 mb-4 bg-white rounded">
+          <!-- Alert Error -->
+          <div
+            v-if="errorMessage"
+            class="bg-red-200 px-6 py-4 my-5 rounded-md text-sm flex items-center mx-auto "
+          >
+            <svg
+              viewBox="0 0 24 24"
+              class="text-red-600 w-5 h-5 sm:w-5 sm:h-5 mr-3"
+            >
+              <path
+                fill="currentColor"
+                d="M11.983,0a12.206,12.206,0,0,0-8.51,3.653A11.8,11.8,0,0,0,0,12.207,11.779,11.779,0,0,0,11.8,24h.214A12.111,12.111,0,0,0,24,11.791h0A11.766,11.766,0,0,0,11.983,0ZM10.5,16.542a1.476,1.476,0,0,1,1.449-1.53h.027a1.527,1.527,0,0,1,1.523,1.47,1.475,1.475,0,0,1-1.449,1.53h-.027A1.529,1.529,0,0,1,10.5,16.542ZM11,12.5v-6a1,1,0,0,1,2,0v6a1,1,0,1,1-2,0Z"
+              ></path>
+            </svg>
+            <span class="text-red-800">{{ errorMessage }} </span>
+          </div>
+          <!-- End Alert Error -->
           <div class="mb-4">
             <label class="block mb-2 text-gray-700" for="email">
               Cost
@@ -44,14 +61,18 @@
           >
             <p class="w-1/2 mb-2 md:mb-0">Type of bill</p>
             <select
+            v-model="selectedCat"
               class="w-full border border-gray-200 p-2 focus:outline-none focus:border-gray-500"
             >
               <option value="select" selected>
                 Select an option
               </option>
-              <option value="bug">report a bug</option>
-              <option value="feature">Request a feature</option>
-              <option value="feedback">Feedback</option>
+              <option
+                v-for="category in categories"
+                :key="category.id"
+                value="category"
+                >{{ category.categoryName }}</option
+              >
             </select>
           </div>
 
@@ -88,3 +109,32 @@
     </div>
   </div>
 </template>
+
+<script>
+import { mapGetters } from "vuex";
+export default {
+  data() {
+    return {
+      selectedCat: "select",
+    };
+  },
+  mounted() {
+    this.$store.dispatch("fetchCategory");
+  },
+  computed: {
+    ...mapGetters({
+      errorMessage: "errMessage",
+      categories: "categoriesList",
+    }),
+  },
+  watch: {
+    selectedCat() {
+      if (this.selectedCat.value === "select") {
+        this.$store.commit("setError", "You have to select type of bill!");
+      } else {
+        this.$store.commit("setError", null);
+      }
+    },
+  },
+};
+</script>

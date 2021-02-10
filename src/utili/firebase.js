@@ -18,17 +18,13 @@ const db = firebaseApp.firestore();
 const auth = firebase.auth();
 const usersCollection = db.collection("users");
 
+export const database = db;
+export const Auth = auth;
+
+// Users Tools
 export const signIn = (email, pass) => {
   return auth.createUserWithEmailAndPassword(email, pass);
 };
-
-// firebase.auth().signOut().then(() => {
-//   // Sign-out successful.
-// }).catch((error) => {
-//   // An error happened.
-// });
-
-
 export const logOut = () => {
   return auth.signOut();
 };
@@ -38,14 +34,29 @@ export const logIn = (email, pass) => {
 export const saveUser = (user) => {
   return usersCollection.add(user);
 };
+
 // listen for auth status changes
 export const isAuth = auth.onAuthStateChanged((user) => {
   if (user) {
-    console.log("user logged in: ", user.email);
+    console.log("user logged in: ", user.email,user.uid);
   } else {
     console.log("user logged out");
   }
 });
+// user Tools end
+
+// categories tools
+const categoriesCollection = db.collection("categories");
+
+export const saveCat = (cat) => {
+  return categoriesCollection.add(cat);
+};
+
+// export const getCategories = async (id) => {
+//   const user = await usersCollection.doc(id).get();
+//   return user.exists ? user.data() : null;
+// };
+
 
 // export const getUser = async (id) => {
 //   const user = await usersCollection.doc(id).get();
