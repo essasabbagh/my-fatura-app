@@ -58,14 +58,14 @@
       >
         <i class="fas fa-cogs"></i>
       </router-link>
-      <router-link
+      <botton
+        @click="$store.commit('logout')"
         v-if="true"
-        to="/login"
         class="h-16 mx-auto flex justify-center items-center
 				w-full focus:text-red-500 hover:bg-red-300 focus:outline-none"
       >
         <i class="fas fa-sign-out-alt"></i>
-      </router-link>
+      </botton>
     </div>
   </aside>
 </template>
