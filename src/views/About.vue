@@ -4,7 +4,7 @@
       <div class="flex p-10">
         <div class="mb-auto mt-auto max-w-lg">
           <h1 class="text-3xl uppercase">Mohamad Essa Sabbagh</h1>
-          <p class="font-semibold mb-5">Front End Developer and Chocolate Enthusiast 🍫</p>
+          <p class="font-semibold mb-5">Front End Developer👨‍💻 & Chocolate Enthusiast 🍫</p>
           <p>
             Front-End Developer who is open to learning new technologies that
             are especially interested in Web design, UX, and UI design. Working
@@ -13,13 +13,19 @@
           </p>
           <a
             href="mailto:essasabbagh@gmail.com"
-            class="inline-block bg-gray-800 rounded-md py-3 px-7 mt-6 text-white"
+            class="inline-block bg-red-500 rounded-md py-3 px-7 mt-6 text-white"
             >Email Me</a
           >
           <a
             href="/"
-            class="inline-block bg-gray-800 rounded-md py-3 px-7 mt-6 ml-5 text-white"
+            class="inline-block bg-teal-500 rounded-md py-3 px-7 mt-6 ml-5 text-white"
             >Home</a
+          >
+          <a
+            href="https://github.com/essasabbagh/my-fatura-app"
+            target="_blank"
+            class="inline-block bg-gray-700 rounded-md py-3 px-7 mt-6 ml-5 text-white"
+            >Source code</a
           >
         </div>
       </div>
