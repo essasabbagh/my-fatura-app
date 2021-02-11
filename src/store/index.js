@@ -187,6 +187,17 @@ export default createStore({
           });
       });
     },
+    deleteBill({ state, commit }, billId) {
+      commit("setUserId");
+      fire.Users.doc(`${state.userid}`)
+        .collection("bills")
+        .doc(billId)
+        .delete()
+        .catch((err) => {
+          console.error(err);
+          commit("setError", err.message);
+        });
+    },
   },
   getters: {
     billList: (state) => state.bills,

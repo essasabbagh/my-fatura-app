@@ -39,6 +39,7 @@
             {{ bill.description }}
           </td>
           <td
+            @click="deleteBill(bill.id)"
             class="border-grey-light border hover:bg-gray-100 p-3 text-red-400 hover:text-red-600 hover:font-medium cursor-pointer"
           >
             Delete
@@ -141,7 +142,18 @@ export default {
       // bills: [],
     };
   },
-  methods: {},
+  methods: {
+    deleteBill(id) {
+      console.log(id);
+      if (confirm("Are you sure")) {
+        this.$store.dispatch("deleteBill", id);
+      } else {
+        console.log("Delete Canceled");
+      }
+
+      // console.log(this.bills);
+    },
+  },
   created() {
     this.$store.dispatch("fetchBills");
   },
