@@ -19,7 +19,7 @@
       </thead>
       <tbody class="flex-1 sm:flex-none">
         <tr
-          v-for="bill in bills"
+          v-for="bill in selectedCategory"
           :key="bill.id"
           class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0"
         >
@@ -134,14 +134,9 @@
 </template>
 
 <script>
-// import axios from "axios";
 import { mapGetters } from "vuex";
 export default {
-  data() {
-    return {
-      // bills: [],
-    };
-  },
+  props: ["filterValue"],
   methods: {
     deleteBill(id) {
       console.log(id);
@@ -159,6 +154,13 @@ export default {
   },
   computed: {
     ...mapGetters({ bills: "billList" }),
+    selectedCategory() {
+      if (this.filterValue === "all") {
+        return this.bills;
+      } else {
+        return this.bills.filter((v) => v.type == this.filterValue);
+      }
+    },
   },
 };
 </script>

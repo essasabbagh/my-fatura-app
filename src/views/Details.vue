@@ -7,22 +7,23 @@
       >
         <p class="w-1/2 mb-2 md:mb-0">Filtering</p>
         <select
+          v-model="filterValue"
           class="w-full border border-gray-200 p-2 focus:outline-none focus:border-gray-500"
         >
-          <option value="select" selected>
+          <option value="all" selected>
             All
           </option>
           <option
-                v-for="category in categories"
-                :key="category.id"
-                :value="category.categoryName"
-                >{{ category.categoryName }}</option
-              >
+            v-for="category in categories"
+            :key="category.id"
+            :value="category.categoryName"
+            >{{ category.categoryName }}</option
+          >
         </select>
       </div>
     </div>
     <div class="overflow-y-auto">
-      <Table />
+      <Table :filterValue="filterValue" />
     </div>
   </div>
 </template>
@@ -31,6 +32,11 @@
 import { mapGetters } from "vuex";
 import Table from "../components/Table";
 export default {
+  data() {
+    return {
+      filterValue: "all",
+    };
+  },
   components: {
     Table,
   },
