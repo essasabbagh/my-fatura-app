@@ -35,23 +35,25 @@
           </div>
           <!-- End Alert Error -->
           <div class="mb-4">
-            <label class="block mb-2 text-gray-700" for="email">
+            <label class="block mb-2 text-gray-700" for="cost">
               Cost
             </label>
             <input
+              v-model="billInfo.cost"
               class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-              id="email"
+              id="cost"
               type="email"
               placeholder="Enter Email Address..."
             />
           </div>
           <div class="mb-4">
-            <label class="block mb-2 text-gray-700" for="email">
+            <label class="block mb-2 text-gray-700" for="date">
               Date
             </label>
             <input
+              v-model="billInfo.date"
               class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
-              id="email"
+              id="date"
               type="date"
               placeholder="Enter password..."
             />
@@ -61,10 +63,10 @@
           >
             <p class="w-1/2 mb-2 md:mb-0">Type of bill</p>
             <select
-            v-model="selectedCat"
+              v-model="billInfo.type"
               class="w-full border border-gray-200 p-2 focus:outline-none focus:border-gray-500"
             >
-              <option value="select" selected>
+              <option class="text-gray-400" value="select" selected>
                 Select an option
               </option>
               <option
@@ -79,9 +81,15 @@
           <div
             class="options md:flex md:space-x-6 items-center text-gray-700 mt-4"
           >
-            <p class="w-1/2 mb-2 md:mb-0">
-              <input type="checkbox" name="" id="" /> Has been paid?
-            </p>
+            <label for="paid" class="block mb-2 text-gray-700">
+              Has been paid?
+            </label>
+            <input
+              v-model="billInfo.hasPaid"
+              type="checkbox"
+              name="paid"
+              id="paid"
+            />
           </div>
 
           <div class="text-sm flex flex-col mt-5">
@@ -89,6 +97,7 @@
               Description
             </label>
             <textarea
+              v-model="billInfo.description"
               rows="2"
               class=" appearance-none w-full border border-gray-200 p-2 focus:outline-none focus:border-gray-500"
               placeholder="Enter your description"
@@ -97,6 +106,7 @@
 
           <div class="mb-6 mt-6 text-center">
             <button
+              @click="createNewBill"
               class="w-full px-4 py-2 font-bold text-white bg-teal-500 rounded-full hover:bg-teal-700 focus:outline-none focus:shadow-outline"
               type="button"
             >
@@ -116,7 +126,20 @@ export default {
   data() {
     return {
       selectedCat: "select",
+      billInfo: {
+        cost: null,
+        date: null,
+        hasPaid: false,
+        type: "select",
+        description: "",
+      },
     };
+  },
+  methods: {
+    createNewBill() {
+      console.log(this.billInfo);
+      // this.$store.dispatch("createBill", {});
+    },
   },
   mounted() {
     this.$store.dispatch("fetchCategory");
@@ -128,8 +151,8 @@ export default {
     }),
   },
   watch: {
-    selectedCat() {
-      if (this.selectedCat.value === "select") {
+    billInfo() {
+      if (this.billInfo.type.value === "select") {
         this.$store.commit("setError", "You have to select type of bill!");
       } else {
         this.$store.commit("setError", null);

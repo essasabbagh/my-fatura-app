@@ -19,6 +19,9 @@ export default createStore({
         state.userid = null;
       }
     },
+    setBill(state, pBills) {
+      state.bills.push(pBills);
+    },
     setBills(state, pBills) {
       state.bills = pBills;
     },
@@ -45,8 +48,16 @@ export default createStore({
     login({ commit }, info) {
       fire.logIn(info.email, info.password).then(
         (cred) => {
-          console.log(cred);
-          commit("setUser", { uid: cred.user.uid });
+          console.log("cred", cred.user.uid);
+          fire.Users.where("uid", "==", `${cred.user.uid}`)
+            .get()
+            .then((user) => {
+              user.docs.forEach((doc) => {
+                commit("setUser", { uid: doc.data().uid, id: doc.id });
+                console.log(doc.id);
+              });
+            });
+          // commit("setUser", { uid: cred.user.uid });
           commit("setError", null);
           router.push({ name: "Home" });
         },
@@ -131,6 +142,22 @@ export default createStore({
       }
     },
 
+    createBill({ state, commit }, bill) {
+      fire.Auth.onAuthStateChanged((user) => {
+        console.log("uid", user.uid);
+        fire.Users.doc(state.userid)
+          .collection("bills")
+          .add(bill)
+          .then(() => {
+            console.log(state.bills);
+            commit("setBill", bill);
+          })
+          .catch((err) => {
+            console.error("my", err.message);
+            commit("setError", err.message);
+          });
+      });
+    },
     fetchBills({ commit }) {
       // axios
       //   .get("http://localhost:5000/bills")
