@@ -92,20 +92,19 @@
           <div class="mb-6 mt-6 text-center">
             <a
               href="/newcategory"
-              class="block w-full px-4 py-2 font-bold text-white bg-yellow-500 rounded-full hover:bg-yellow-600 focus:outline-none focus:shadow-outline"
+              class="block w-full px-4 py-2 font-bold text-white bg-yellow-500 rounded-full hover:bg-yellow-600 focus:outline-none focus:shadow-outline transition-all"
               type="button"
             >
               Add New Category <i class="fas fa-external-link-alt"></i>
             </a>
             <hr class="my-5 border-t" />
             <button
-              class="w-full px-4 py-2 font-bold text-white bg-teal-500 rounded-full hover:bg-teal-700 focus:outline-none focus:shadow-outline"
+              class="w-full px-4 py-2 font-bold text-white bg-teal-500 rounded-full hover:bg-teal-700 focus:outline-none focus:shadow-outline transition-all"
               type="button"
             >
               Save
             </button>
           </div>
-          
         </form>
       </div>
     </div>

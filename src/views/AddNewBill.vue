@@ -43,7 +43,7 @@
               class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
               id="cost"
               type="email"
-              placeholder="Enter Email Address..."
+              placeholder="Enter cost..."
             />
           </div>
           <div class="mb-4">
@@ -55,7 +55,6 @@
               class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
               id="date"
               type="date"
-              placeholder="Enter password..."
             />
           </div>
           <div
@@ -107,7 +106,7 @@
           <div class="mb-6 mt-6 text-center">
             <button
               @click="createNewBill"
-              class="w-full px-4 py-2 font-bold text-white bg-teal-500 rounded-full hover:bg-teal-700 focus:outline-none focus:shadow-outline"
+              class="w-full px-4 py-2 font-bold text-white bg-teal-500 rounded-full hover:bg-teal-700 focus:outline-none focus:shadow-outline transition-all"
               type="button"
             >
               Add
@@ -137,8 +136,26 @@ export default {
   },
   methods: {
     createNewBill() {
-      // console.log(this.billInfo);
-      this.$store.dispatch("createBill", this.billInfo);
+      if (
+        this.billInfo.cost === null ||
+        this.billInfo.cost === "" ||
+        this.billInfo.date == null
+      ) {
+        this.$store.commit("setError", "Empty value is not accept!");
+      } else if (this.billInfo.type === "select") {
+        this.$store.commit("setError", "You have to select type of bill!");
+      } else if (isNaN(this.billInfo.cost)) {
+        this.$store.commit("setError", "Cost should be a number!");
+      } else {
+        this.$store.dispatch("createBill", this.billInfo);
+        this.billInfo = {
+          cost: null,
+          date: null,
+          hasPaid: false,
+          type: "select",
+          description: "",
+        };
+      }
     },
   },
   mounted() {
@@ -150,14 +167,6 @@ export default {
       categories: "categoriesList",
     }),
   },
-  watch: {
-    billInfo() {
-      if (this.billInfo.type.value === "select") {
-        this.$store.commit("setError", "You have to select type of bill!");
-      } else {
-        this.$store.commit("setError", null);
-      }
-    },
-  },
+  
 };
 </script>

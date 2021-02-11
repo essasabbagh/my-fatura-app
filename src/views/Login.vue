@@ -60,7 +60,7 @@
           <div class="mb-6 text-center">
             <button
             @click="login"
-              class="w-full px-4 py-2 font-bold text-white bg-teal-500 rounded-full hover:bg-teal-700 focus:outline-none focus:shadow-outline"
+              class="w-full px-4 py-2 font-bold text-white bg-teal-500 rounded-full hover:bg-teal-700 focus:outline-none focus:shadow-outline transition-all"
               type="button"
             >
               Log in
@@ -70,7 +70,7 @@
           <div class="text-center">
             <router-link
               to="/register"
-              class="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
+              class="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800 transition-all"
             >
               Create an Account!
             </router-link>
@@ -78,7 +78,7 @@
           <div class="text-center">
             <router-link
               to="/reset"
-              class="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
+              class="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800 transition-all"
               href="./index.html"
             >
               Forget your password? Password Reset!

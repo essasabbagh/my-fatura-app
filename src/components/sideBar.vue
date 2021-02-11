@@ -5,6 +5,16 @@
     <ul>
       <li class="hover:bg-gray-100">
         <router-link
+          v-if="!isAuth"
+          to="/"
+          class="h-16 px-6 flex justify-center items-center w-full hover:bg-teal-200
+					focus:text-teal-500"
+        >
+          <i class="fas fa-home"></i>
+        </router-link>
+      </li>
+      <li class="hover:bg-gray-100">
+        <router-link
           v-if="isAuth"
           to="/month"
           class="h-16 px-6 flex justify-center items-center w-full hover:bg-teal-200

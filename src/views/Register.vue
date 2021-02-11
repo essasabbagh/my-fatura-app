@@ -106,7 +106,7 @@
 
           <div class="mb-6 text-center">
             <button
-              class="w-full px-4 py-2 font-bold text-white bg-teal-500 rounded-full hover:bg-teal-700 focus:outline-none focus:shadow-outline"
+              class="w-full px-4 py-2 font-bold text-white bg-teal-500 rounded-full hover:bg-teal-700 focus:outline-none focus:shadow-outline transition-all"
               type="button"
               @click="signIn"
             >
@@ -118,7 +118,7 @@
           <div class="text-center">
             <router-link
               to="/login"
-              class="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
+              class="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800 transition-all"
             >
               Already have an account? Login!
             </router-link>
