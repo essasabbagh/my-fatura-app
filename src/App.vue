@@ -11,6 +11,6 @@
 export default {
   mounted() {
     this.$store.dispatch("isAuthentication");
-  },
+  }
 };
 </script>

@@ -9,7 +9,7 @@ const firebaseConfig = {
   projectId: "my-fatura",
   storageBucket: "my-fatura.appspot.com",
   messagingSenderId: "1071383409038",
-  appId: "1:1071383409038:web:24b142ac1625d81049f4df",
+  appId: "1:1071383409038:web:24b142ac1625d81049f4df"
 };
 // Initialize Firebase
 const firebaseApp = firebase.initializeApp(firebaseConfig);
@@ -32,7 +32,7 @@ export const logOut = () => {
 export const logIn = (email, pass) => {
   return auth.signInWithEmailAndPassword(email, pass);
 };
-export const saveUser = (user) => {
+export const saveUser = user => {
   return usersCollection.add(user);
 };
 
@@ -51,7 +51,7 @@ export const saveUser = (user) => {
 // categories tools
 const categoriesCollection = db.collection("categories");
 
-export const saveCat = (cat) => {
+export const saveCat = cat => {
   return categoriesCollection.add(cat);
 };
 

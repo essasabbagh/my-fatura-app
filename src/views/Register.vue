@@ -135,18 +135,18 @@ export default {
   data() {
     return {
       passTwo: "",
-      userInfo: { name: "", email: "", password: "" },
+      userInfo: { name: "", email: "", password: "" }
     };
   },
   methods: {
     signIn() {
       this.$store.dispatch("createUser", this.userInfo);
-    },
+    }
   },
   computed: {
     ...mapGetters({
-      errorMessage: "errMessage",
-    }),
+      errorMessage: "errMessage"
+    })
   },
   watch: {
     passTwo() {
@@ -159,7 +159,7 @@ export default {
       } else {
         this.$store.commit("setError", null);
       }
-    },
-  },
+    }
+  }
 };
 </script>

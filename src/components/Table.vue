@@ -147,7 +147,7 @@ export default {
       }
 
       // console.log(this.bills);
-    },
+    }
   },
   created() {
     this.$store.dispatch("fetchBills");
@@ -158,10 +158,10 @@ export default {
       if (this.filterValue === "all") {
         return this.bills;
       } else {
-        return this.bills.filter((v) => v.type == this.filterValue);
+        return this.bills.filter(v => v.type == this.filterValue);
       }
-    },
-  },
+    }
+  }
 };
 </script>
 

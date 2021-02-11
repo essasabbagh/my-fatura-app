@@ -80,26 +80,25 @@ export default {
   data() {
     return {
       catName: "",
-      description: "",
+      description: ""
     };
   },
   mounted() {
-    this.$store.dispatch("fetchCategory")
-    
+    this.$store.dispatch("fetchCategory");
   },
   methods: {
     addNewCat() {
       this.$store.dispatch("createCategory", {
         categoryName: this.catName,
-        description: this.description,
+        description: this.description
       });
-    },
+    }
   },
   computed: {
     ...mapGetters({
       errorMessage: "errMessage",
       categories: "categoriesList"
-    }),
+    })
   },
   watch: {
     catName() {
@@ -108,7 +107,7 @@ export default {
       } else {
         this.$store.commit("setError", null);
       }
-    },
-  },
+    }
+  }
 };
 </script>

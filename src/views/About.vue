@@ -4,7 +4,9 @@
       <div class="flex p-10">
         <div class="mb-auto mt-auto max-w-lg">
           <h1 class="text-3xl uppercase">Mohamad Essa Sabbagh</h1>
-          <p class="font-semibold mb-5">Front End Developer👨‍💻 & Chocolate Enthusiast 🍫</p>
+          <p class="font-semibold mb-5">
+            Front End Developer👨‍💻 & Chocolate Enthusiast 🍫
+          </p>
           <p>
             Front-End Developer who is open to learning new technologies that
             are especially interested in Web design, UX, and UI design. Working

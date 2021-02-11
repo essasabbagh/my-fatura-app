@@ -89,8 +89,8 @@ import { mapGetters } from "vuex";
 export default {
   computed: {
     ...mapGetters({
-      isAuth: "isAuth",
-    }),
-  },
+      isAuth: "isAuth"
+    })
+  }
 };
 </script>

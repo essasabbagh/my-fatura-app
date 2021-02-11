@@ -9,8 +9,8 @@ const routes = [
     components: {
       default: () => import("../views/Home.vue"),
       appHeader,
-      sideBar,
-    },
+      sideBar
+    }
   },
   {
     path: "/percentage",
@@ -18,8 +18,8 @@ const routes = [
     components: {
       default: () => import("../views/Percentage.vue"),
       appHeader,
-      sideBar,
-    },
+      sideBar
+    }
   },
   {
     path: "/month",
@@ -27,8 +27,8 @@ const routes = [
     components: {
       default: () => import("../views/Month.vue"),
       appHeader,
-      sideBar,
-    },
+      sideBar
+    }
   },
   {
     path: "/year",
@@ -36,8 +36,8 @@ const routes = [
     components: {
       default: () => import("../views/Year.vue"),
       appHeader,
-      sideBar,
-    },
+      sideBar
+    }
   },
   {
     path: "/details",
@@ -45,8 +45,8 @@ const routes = [
     components: {
       default: () => import("../views/Details.vue"),
       appHeader,
-      sideBar,
-    },
+      sideBar
+    }
   },
   {
     path: "/setting",
@@ -54,52 +54,52 @@ const routes = [
     components: {
       default: () => import("../views/Setting.vue"),
       appHeader,
-      sideBar,
-    },
+      sideBar
+    }
   },
   {
     path: "/about",
     name: "About",
     components: {
-      default: () => import("../views/About.vue"),
-    },
+      default: () => import("../views/About.vue")
+    }
   },
   {
     path: "/reset",
     name: "Reset",
     components: {
-      default: () => import("../views/Reset.vue"),
-    },
+      default: () => import("../views/Reset.vue")
+    }
   },
   {
     path: "/login",
     name: "Login",
     components: {
-      default: () => import("../views/Login.vue"),
-    },
+      default: () => import("../views/Login.vue")
+    }
   },
   {
     path: "/register",
     name: "Register",
     components: {
-      default: () => import("../views/Register.vue"),
-    },
+      default: () => import("../views/Register.vue")
+    }
   },
   {
     path: "/newbill",
     name: "AddNewBill",
-    component: () => import("../views/AddNewBill.vue"),
+    component: () => import("../views/AddNewBill.vue")
   },
   {
     path: "/newcategory",
     name: "AddNewCategory",
-    component: () => import("../views/AddNewCategory.vue"),
-  },
+    component: () => import("../views/AddNewCategory.vue")
+  }
 ];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes,
+  routes
 });
 
 export default router;

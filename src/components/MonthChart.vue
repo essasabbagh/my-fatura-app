@@ -18,7 +18,7 @@ export default {
       options: {
         legend: {
           show: true,
-          position: "right",
+          position: "right"
         },
         annotations: {
           yaxis: [
@@ -29,15 +29,15 @@ export default {
                 borderColor: "red",
                 style: {
                   color: "#fff",
-                  background: "red",
+                  background: "red"
                 },
-                text: "max limit on 222",
-              },
-            },
-          ],
+                text: "max limit on 222"
+              }
+            }
+          ]
         },
         chart: {
-          id: "vuechart-example",
+          id: "vuechart-example"
         },
         xaxis: {
           categories: [
@@ -52,21 +52,21 @@ export default {
             "Sep",
             "Oct",
             "Nov",
-            "Dec",
-          ],
-        },
+            "Dec"
+          ]
+        }
       },
 
       series: [
         {
           name: "series-1",
-          data: [300, 420, 455, 166, 249, 360, 470, 277, 333, 155, 166],
+          data: [300, 420, 455, 166, 249, 360, 470, 277, 333, 155, 166]
         },
         {
           name: "series-2",
-          data: [333, 424, 666, 555, 222, 360, 470, 277, 752, 155, 166],
-        },
-      ],
+          data: [333, 424, 666, 555, 222, 360, 470, 277, 752, 155, 166]
+        }
+      ]
     };
   },
   methods: {
@@ -76,7 +76,7 @@ export default {
         r[key] = r[key] || {
           name: "",
           date,
-          data: [],
+          data: []
         };
         r[key]["name"] = type;
         r[key]["data"].push(cost);
@@ -128,7 +128,7 @@ export default {
       // console.log("bills", this.bills.length);
       // console.log("allDate", this.allDate);
       // this.options.xaxis.categories = this.allDate.billDate
-    },
+    }
   },
   created() {
     this.$store.dispatch("fetchBills");
@@ -137,9 +137,9 @@ export default {
     ...mapGetters({ bills: "billList" }),
     allDate() {
       return {
-        billDate: this.bills.map((obj) => new Date(obj.date).getTime()),
+        billDate: this.bills.map(obj => new Date(obj.date).getTime())
       };
-    },
-  },
+    }
+  }
 };
 </script>

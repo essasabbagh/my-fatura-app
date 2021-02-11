@@ -14,7 +14,7 @@ import { mapGetters } from "vuex";
 export default {
   data() {
     return {
-      options: {labels: ['Apple', 'Mango', 'Orange', 'Watermelon']},
+      options: { labels: ["Apple", "Mango", "Orange", "Watermelon"] },
       series: [300, 420, 455, 166, 249, 360, 470, 277, 333, 155, 166]
       // options: {
       //   legend: {
@@ -69,7 +69,7 @@ export default {
     test() {
       console.log("hi", this.allDate.billDate);
       // this.options.xaxis.categories = this.allDate.billDate
-    },
+    }
   },
   created() {
     this.$store.dispatch("fetchBills");
@@ -79,9 +79,9 @@ export default {
     ...mapGetters({ bills: "billList" }),
     allDate() {
       return {
-        billDate: this.bills.map((obj) => new Date(obj.date).getTime()),
+        billDate: this.bills.map(obj => new Date(obj.date).getTime())
       };
-    },
-  },
+    }
+  }
 };
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div>
-<h1 class="text-4xl mt-5">Year Chart:</h1>
+    <h1 class="text-4xl mt-5">Year Chart:</h1>
     <YearChart class="test" />
   </div>
 </template>
@@ -10,4 +10,3 @@ export default {
   components: { YearChart }
 };
 </script>
-

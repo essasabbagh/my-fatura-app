@@ -3,7 +3,9 @@
     class="flex items-center justify-between flex-wrap text-gray-900 bg-teal-500 p-6"
   >
     <div class="flex items-center flex-no-shrink mr-6">
-      <span class="w-10 mr-5 text-gray-900 text-4xl"><i class="fas fa-wallet"></i></span>
+      <span class="w-10 mr-5 text-gray-900 text-4xl"
+        ><i class="fas fa-wallet"></i
+      ></span>
       <span class="font-semibold text-2xl tracking-tight">My Fatura</span>
     </div>
     <div class="block lg:hidden">

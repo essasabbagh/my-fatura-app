@@ -7,6 +7,6 @@
 <script>
 import MonthChart from "../components/MonthChart";
 export default {
-  components: { MonthChart },
+  components: { MonthChart }
 };
 </script>
