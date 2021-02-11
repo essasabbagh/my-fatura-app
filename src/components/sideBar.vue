@@ -59,7 +59,7 @@
         <i class="fas fa-cogs"></i>
       </router-link>
       <botton
-        @click="$store.commit('logout')"
+        @click="$store.dispatch('logout')"
         v-if="true"
         class="h-16 mx-auto flex justify-center items-center
 				w-full focus:text-red-500 hover:bg-red-300 focus:outline-none"
