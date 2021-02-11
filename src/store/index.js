@@ -170,10 +170,6 @@ export default createStore({
             }));
             console.log("billList", billList);
             commit("setBills", billList);
-          })
-          .catch((err) => {
-            commit("setError", err.message);
-            console.error(err);
           });
       });
     },
