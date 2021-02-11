@@ -1,17 +1,20 @@
 import { createStore } from "vuex";
 import router from "@/router";
-// import axios from "axios";
 import * as fire from "../utili/firebase";
 
 export default createStore({
   state: {
     error: null,
+    isAuth: false,
     bills: [],
     categories: [],
     user: {},
     userid: null,
   },
   mutations: {
+    setAuth(state, bAuth) {
+      state.isAuth = bAuth;
+    },
     setUserId(state) {
       if (localStorage.getItem("user")) {
         state.userid = JSON.parse(localStorage.getItem("user")).id;
@@ -45,6 +48,17 @@ export default createStore({
     },
   },
   actions: {
+    isAuthentication({ commit }) {
+      fire.Auth.onAuthStateChanged((user) => {
+        if (user) {
+          console.log("user logged in: ", user.email, user.uid);
+          commit("setAuth", true);
+        } else {
+          console.log("user logged out");
+          commit("setAuth", false);
+        }
+      });
+    },
     login({ commit }, info) {
       fire.logIn(info.email, info.password).then(
         (cred) => {
@@ -178,5 +192,6 @@ export default createStore({
     billList: (state) => state.bills,
     categoriesList: (state) => state.categories,
     errMessage: (state) => state.error,
+    isAuth: (state) => state.isAuth,
   },
 });

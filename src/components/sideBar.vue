@@ -43,7 +43,7 @@
 
     <div class="mt-auto flex flex-col items-center w-full">
       <router-link
-        v-if="true"
+        v-if="!isAuth"
         to="/register"
         class="h-16 px-6 flex justify-center items-center w-full hover:bg-green-300
 					focus:text-green-500"
@@ -51,7 +51,7 @@
         <i class="fas fa-sign-in-alt"></i>
       </router-link>
       <router-link
-        v-if="true"
+        v-if="isAuth"
         to="/setting"
         class="h-16 mx-auto flex justify-center items-center
 				w-full focus:text-yellow-500 hover:bg-yellow-300 focus:outline-none"
@@ -60,7 +60,7 @@
       </router-link>
       <botton
         @click="$store.dispatch('logout')"
-        v-if="true"
+        v-if="isAuth"
         class="h-16 mx-auto flex justify-center items-center
 				w-full focus:text-red-500 hover:bg-red-300 focus:outline-none"
       >
@@ -69,3 +69,14 @@
     </div>
   </aside>
 </template>
+
+<script>
+import { mapGetters } from "vuex";
+export default {
+  computed: {
+    ...mapGetters({
+      isAuth: "isAuth",
+    }),
+  },
+};
+</script>

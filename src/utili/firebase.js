@@ -37,13 +37,15 @@ export const saveUser = (user) => {
 };
 
 // listen for auth status changes
-export const isAuth = auth.onAuthStateChanged((user) => {
-  if (user) {
-    console.log("user logged in: ", user.email,user.uid);
-  } else {
-    console.log("user logged out");
-  }
-});
+// export const isAuth = auth.onAuthStateChanged((user) => {
+//   if (user) {
+//     console.log("user logged in: ", user.email, user.uid);
+//     return true;
+//   } else {
+//     console.log("user logged out");
+//     return false;
+//   }
+// });
 // user Tools end
 
 // categories tools
@@ -57,7 +59,6 @@ export const saveCat = (cat) => {
 //   const user = await usersCollection.doc(id).get();
 //   return user.exists ? user.data() : null;
 // };
-
 
 // export const getUser = async (id) => {
 //   const user = await usersCollection.doc(id).get();

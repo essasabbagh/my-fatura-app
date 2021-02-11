@@ -9,3 +9,11 @@
     <router-view class="row-span-5 col-span-11 col-start-2" />
   </div>
 </template>
+
+<script>
+export default {
+  mounted() {
+    this.$store.dispatch("isAuthentication");
+  },
+}
+</script>
