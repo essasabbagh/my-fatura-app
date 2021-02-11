@@ -137,8 +137,7 @@ export default {
   },
   methods: {
     createNewBill() {
-      console.log(this.billInfo);
-      // this.$store.dispatch("createBill", {});
+      this.$store.dispatch("createBill", this.billInfo);
     },
   },
   mounted() {
