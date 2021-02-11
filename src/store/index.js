@@ -158,16 +158,24 @@ export default createStore({
           });
       });
     },
-    fetchBills({ commit }) {
-      // axios
-      //   .get("http://localhost:5000/bills")
-      //   .then((res) => {
-      //     console.log("res", res.data);
-      //     // this.bills = res.data;
-      commit("setBills", []);
-      //     // commit("setBills", res.data);
-      //   })
-      //   .catch((err) => console.error(err));
+    fetchBills({ state, commit }) {
+      commit("setUserId");
+      fire.Auth.onAuthStateChanged(() => {
+        fire.Users.doc(`${state.userid}`)
+          .collection("bills")
+          .onSnapshot((snap) => {
+            const billList = snap.docs.map((doc) => ({
+              id: doc.id,
+              ...doc.data(),
+            }));
+            console.log("billList", billList);
+            commit("setBills", billList);
+          })
+          .catch((err) => {
+            commit("setError", err.message);
+            console.error(err);
+          });
+      });
     },
   },
   getters: {

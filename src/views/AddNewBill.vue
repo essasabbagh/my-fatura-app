@@ -72,7 +72,7 @@
               <option
                 v-for="category in categories"
                 :key="category.id"
-                value="category"
+                :value="category.categoryName"
                 >{{ category.categoryName }}</option
               >
             </select>
@@ -137,6 +137,7 @@ export default {
   },
   methods: {
     createNewBill() {
+      // console.log(this.billInfo);
       this.$store.dispatch("createBill", this.billInfo);
     },
   },

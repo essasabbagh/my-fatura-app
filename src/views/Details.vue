@@ -2,7 +2,9 @@
   <div>
     <div class="flex justify-around">
       <h1 class="text-4xl mt-5 mr-auto">Details:</h1>
-      <div class="options md:flex md:space-x-6 items-center text-gray-700 mt-5 mr-auto">
+      <div
+        class="options md:flex md:space-x-6 items-center text-gray-700 mt-5 mr-auto"
+      >
         <p class="w-1/2 mb-2 md:mb-0">Filtering</p>
         <select
           class="w-full border border-gray-200 p-2 focus:outline-none focus:border-gray-500"
@@ -10,9 +12,12 @@
           <option value="select" selected>
             All
           </option>
-          <option value="bug">report a bug</option>
-          <option value="feature">Request a feature</option>
-          <option value="feedback">Feedback</option>
+          <option
+                v-for="category in categories"
+                :key="category.id"
+                :value="category.categoryName"
+                >{{ category.categoryName }}</option
+              >
         </select>
       </div>
     </div>
@@ -23,10 +28,22 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import Table from "../components/Table";
 export default {
   components: {
     Table,
+  },
+  mounted() {
+    this.$store.dispatch("fetchCategory");
+    this.$store.dispatch("fetchBills");
+  },
+
+  computed: {
+    ...mapGetters({
+      errorMessage: "errMessage",
+      categories: "categoriesList",
+    }),
   },
 };
 </script>
