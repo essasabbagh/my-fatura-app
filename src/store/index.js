@@ -61,7 +61,6 @@ export default createStore({
       fire
         .logOut()
         .then(() => {
-          console.log("logout");
           commit("logout");
         })
         .catch((err) => {
