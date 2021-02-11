@@ -9,9 +9,16 @@ export default createStore({
     bills: [],
     categories: [],
     user: {},
-    userid: JSON.parse(localStorage.getItem("user")).id,
+    userid: null,
   },
   mutations: {
+    setUserId(state) {
+      if (localStorage.getItem("user")) {
+        state.userid = JSON.parse(localStorage.getItem("user")).id;
+      } else {
+        state.userid = null;
+      }
+    },
     setBills(state, pBills) {
       state.bills = pBills;
     },
@@ -54,6 +61,7 @@ export default createStore({
       fire
         .logOut()
         .then(() => {
+          console.log("logout");
           commit("logout");
         })
         .catch((err) => {
@@ -83,6 +91,7 @@ export default createStore({
     },
 
     createCategory({ state, commit }, cat) {
+      commit("setUserId");
       fire.Auth.onAuthStateChanged((user) => {
         console.log("uid", user.uid);
         console.log("cat", cat);
@@ -103,19 +112,24 @@ export default createStore({
     },
 
     fetchCategory({ state, commit }) {
-      const categories = fire.database
-        .collection("users")
-        .doc(`${state.userid}`)
-        .collection("categories")
-        .onSnapshot((snap) => {
-          const catList = snap.docs.map((doc) => ({
-            id: doc.id,
-            ...doc.data()
-          }));
-          console.log("catList", catList);
-          commit("setCategories", catList);
-        });
-      console.log(categories);
+      commit("setUserId");
+      if (state.userid) {
+        const categories = fire.database
+          .collection("users")
+          .doc(`${state.userid}`)
+          .collection("categories")
+          .onSnapshot((snap) => {
+            const catList = snap.docs.map((doc) => ({
+              id: doc.id,
+              ...doc.data(),
+            }));
+            console.log("catList", catList);
+            commit("setCategories", catList);
+          });
+        console.log(categories);
+      } else {
+        console.log("no id");
+      }
     },
 
     fetchBills({ commit }) {
