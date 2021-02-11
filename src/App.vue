@@ -9,12 +9,3 @@
     <router-view class="row-span-5 col-span-11 col-start-2" />
   </div>
 </template>
-
-<script>
-// import { isAuth } from "./utili/firebase";
-export default {
-  mounted() {
-    // console.log("isAuth",isAuth);
-  },
-};
-</script>

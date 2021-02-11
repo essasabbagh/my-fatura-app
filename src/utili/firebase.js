@@ -20,6 +20,7 @@ const usersCollection = db.collection("users");
 
 export const database = db;
 export const Auth = auth;
+export const Users = db.collection("users");
 
 // Users Tools
 export const signIn = (email, pass) => {
