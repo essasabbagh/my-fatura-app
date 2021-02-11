@@ -4,13 +4,13 @@
   >
     <ul>
       <li class="hover:bg-gray-100">
-        <a
-          href="#"
+        <router-link
+          to="/month"
           class="h-16 px-6 flex justify-center items-center w-full hover:bg-teal-200
 					focus:text-teal-500"
         >
           <i class="fas fa-chart-line"></i>
-        </a>
+        </router-link>
       </li>
       <li class="hover:bg-gray-100">
         <router-link

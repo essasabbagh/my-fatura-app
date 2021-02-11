@@ -22,6 +22,15 @@ const routes = [
     },
   },
   {
+    path: "/month",
+    name: "Month",
+    components: {
+      default: () => import("../views/Month.vue"),
+      appHeader,
+      sideBar,
+    },
+  },
+  {
     path: "/year",
     name: "Year",
     components: {
