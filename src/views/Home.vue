@@ -1,16 +1,6 @@
 <template>
-  <div>
+  <div class="">
     <h1 class="text-4xl mt-5">Home:</h1>
-    <MonthChart class="test" />
-    <!-- <div class="col-span-11 gap-5">
-      <Chart class="shadow-md" />
-      <Table class="shadow-md" />
-    </div> -->
+    
   </div>
 </template>
-<script>
-import MonthChart from "../components/MonthChart";
-export default {
-  components: { MonthChart }
-};
-</script>

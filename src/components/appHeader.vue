@@ -57,14 +57,15 @@ svg {
 }
 .fixed {
   text-align: center;
-  font-weight: bolder;
+  font-weight: 900;
   width: 4em;
   height: 4em;
   position: absolute;
   border: 5px solid white;
   border-radius: 50%;
-  right: 25px;
-  top: 65px;
-  line-height: 3em;
+  right: 4em;
+  top: 90px;
+  line-height: 3.2em;
+  z-index: 5;
 }
 </style>
