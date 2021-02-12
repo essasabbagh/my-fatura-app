@@ -65,8 +65,23 @@ export default {
   },
   methods: {
     test() {
-      console.log("hi", this.allDate.billDate);
-      // this.options.xaxis.categories = this.allDate.billDate
+      const merged = this.bills.reduce((r, { date, type, cost }) => {
+        const key = `${type}`;
+        r[key] = r[key] || {
+          name: "",
+          date,
+          data: []
+        };
+        r[key]["name"] = type;
+        r[key]["data"].push(cost);
+        return r;
+      }, {});
+      const timeTable = Object.values(merged);
+      console.log(timeTable);
+      this.series = timeTable;
+
+      console.log("series", this.series);
+      console.log("bills", this.bills);
     }
   },
   created() {

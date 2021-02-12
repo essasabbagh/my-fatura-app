@@ -1,6 +1,5 @@
 <template>
   <div>
-    <button @click="test">test</button>
     <apexchart
       class="apexchart"
       type="line"
@@ -86,52 +85,13 @@ export default {
       console.log(timeTable);
       this.series = timeTable;
 
-      // let arrs = this.bills.reduce((r, bill) => {
-      //   const { date, cost, type } = bill;
-      //   r[type] = [
-      //     ...(r[type] || []),
-      //     {
-      //       date,
-      //       cost,
-      //     },
-      //   ];
-      //   return r;
-      // }, {});
-      // console.log(arrs);
-
-      // let result = this.bills.reduce(function(r, a) {
-      //   r[a.type] = r[a.type] || [];
-      //   r[a.type].push(a.cost);
-      //   return r;
-      // }, Object.create(null));
-      // console.log(result);
       console.log("series", this.series);
       console.log("bills", this.bills);
-
-      // let bigArr = [];
-      // for (const bill in this.bills) {
-      //   if (Object.hasOwnProperty.call(this.bills, bill)) {
-      //     const element = this.bills[bill];
-      //     bigArr.push({ name: element.type, data: element.cost });
-      //   }
-      // }
-      // console.log(bigArr);
-      // const tt = this.bills.map((e) => (e = e.cost));
-      // const ee = this.bills.filter((e) => (e = e.cost));
-      // console.log(tt);
-      // console.log(ee);
-
-      // this.bills.forEach((e) => {
-      //   console.log({ name: e.type, data: e.cost });
-      // });
-
-      // console.log("bills", this.bills.length);
-      // console.log("allDate", this.allDate);
-      // this.options.xaxis.categories = this.allDate.billDate
     }
   },
   created() {
     this.$store.dispatch("fetchBills");
+    this.test();
   },
   computed: {
     ...mapGetters({ bills: "billList" }),

@@ -3,7 +3,7 @@
     <apexchart
       class="apexchart"
       type="donut"
-      width="680"
+      width="640"
       :options="options"
       :series="series"
     ></apexchart>
@@ -16,59 +16,23 @@ export default {
     return {
       options: { labels: ["Apple", "Mango", "Orange", "Watermelon"] },
       series: [300, 420, 455, 166, 249, 360, 470, 277, 333, 155, 166]
-      // options: {
-      //   legend: {
-      //     show: true,
-      //     position: "right",
-      //   },
-      //   annotations: {
-      //     yaxis: [
-      //       {
-      //         y: 222,
-      //         borderColor: "red",
-      //         label: {
-      //           borderColor: "red",
-      //           style: {
-      //             color: "#fff",
-      //             background: "red",
-      //           },
-      //           text: "max limit on 222",
-      //         },
-      //       },
-      //     ],
-      //   },
-      //   chart: {
-      //     id: "vuechart-example",
-      //   },
-      //   xaxis: {
-      //     categories: [
-      //       "Jan",
-      //       "Feb",
-      //       "Mar",
-      //       "Apr",
-      //       "May",
-      //       "Jun",
-      //       "Jul",
-      //       "Aug",
-      //       "Sep",
-      //       "Oct",
-      //       "Nov",
-      //       "Dec",
-      //     ],
-      //   },
-      // },
-      // series: [
-      //   {
-      //     name: "series-1",
-      //     data: [300, 420, 455, 166, 249, 360, 470, 277, 333, 155, 166],
-      //   },
-      // ],
     };
   },
   methods: {
     test() {
-      console.log("hi", this.allDate.billDate);
-      // this.options.xaxis.categories = this.allDate.billDate
+      var result = [];
+
+      this.bills.reduce((res, value) => {
+        if (!res[value.type]) {
+          res[value.type] = { labels: value.type, series: 0 };
+          result.push(res[value.type]);
+        }
+        res[value.type].series += parseInt(value.cost);
+        return res;
+      }, {});
+
+      this.options = { labels: result.map(e => e.labels) };
+      this.series = result.map(e => e.series);
     }
   },
   created() {
