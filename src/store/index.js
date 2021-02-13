@@ -37,9 +37,11 @@ export default createStore({
     },
     setError(state, pError) {
       state.error = pError;
+      state.success = null;
     },
     setSuccess(state, pSuccess) {
       state.success = pSuccess;
+      state.error = null;
     },
     setUser(state, pUser) {
       state.user = pUser;
@@ -136,7 +138,6 @@ export default createStore({
           .catch((err) => {
             console.error("my", err.message);
             commit("setError", err.message);
-            commit("setSuccess", null);
           });
       });
     },
@@ -171,6 +172,7 @@ export default createStore({
           .then(() => {
             console.log(state.bills);
             commit("setBill", bill);
+            commit("setSuccess", "Bill added Successfuly");
           })
           .catch((err) => {
             console.error("my", err.message);

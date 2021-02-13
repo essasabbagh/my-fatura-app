@@ -11,10 +11,7 @@
       <div class="w-full lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none">
         <div class="px-8 mb-4 text-center">
           <h3 class="pt-4 mb-2 text-2xl">Add New Category</h3>
-          <!-- <p class="mb-4 text-sm text-gray-700">
-            We get it, stuff happens. Just enter your email address below and
-            we'll send you a link to reset your password!
-          </p> -->
+          
         </div>
         <form class="px-8 pt-6 pb-8 mb-4 bg-white rounded">
           <!-- Alert Success -->

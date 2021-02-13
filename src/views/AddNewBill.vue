@@ -9,18 +9,31 @@
       ></div>
       <!-- Col -->
       <div class="w-full lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none">
-        <div class="px-8 mb-4 text-center">
-          <h3 class="pt-4 mb-2 text-2xl">Add New Bill</h3>
-          <!-- <p class="mb-4 text-sm text-gray-700">
-            We get it, stuff happens. Just enter your email address below and
-            we'll send you a link to reset your password!
-          </p> -->
+        <div class="px-8 text-center">
+          <h3 class="pt-4 text-2xl">Add New Bill</h3>
         </div>
-        <form class="px-8 pt-6 pb-8 mb-4 bg-white rounded">
+        <form class="px-8 pt-3 pb-8 mb-4 bg-white rounded">
+          <!-- Alert Success -->
+          <div
+            v-if="successMessage"
+            class="bg-green-200 px-6 py-4 rounded-md text-sm flex items-center mx-auto "
+          >
+            <svg
+              viewBox="0 0 24 24"
+              class="text-green-600 w-5 h-5 sm:w-5 sm:h-5 mr-3"
+            >
+              <path
+                fill="currentColor"
+                d="M12,0A12,12,0,1,0,24,12,12.014,12.014,0,0,0,12,0Zm6.927,8.2-6.845,9.289a1.011,1.011,0,0,1-1.43.188L5.764,13.769a1,1,0,1,1,1.25-1.562l4.076,3.261,6.227-8.451A1,1,0,1,1,18.927,8.2Z"
+              ></path>
+            </svg>
+            <span class="text-green-800">{{ successMessage }}</span>
+          </div>
+          <!-- End Alert Success -->
           <!-- Alert Error -->
           <div
             v-if="errorMessage"
-            class="bg-red-200 px-6 py-4 my-5 rounded-md text-sm flex items-center mx-auto "
+            class="bg-red-200 px-6 py-4 rounded-md text-sm flex items-center mx-auto "
           >
             <svg
               viewBox="0 0 24 24"
@@ -130,8 +143,8 @@ export default {
         date: null,
         hasPaid: false,
         type: "select",
-        description: ""
-      }
+        description: "",
+      },
     };
   },
   methods: {
@@ -153,10 +166,10 @@ export default {
           date: null,
           hasPaid: false,
           type: "select",
-          description: ""
+          description: "",
         };
       }
-    }
+    },
   },
   mounted() {
     this.$store.dispatch("fetchCategory");
@@ -164,8 +177,9 @@ export default {
   computed: {
     ...mapGetters({
       errorMessage: "errMessage",
-      categories: "categoriesList"
-    })
-  }
+      successMessage: "sucMessage",
+      categories: "categoriesList",
+    }),
+  },
 };
 </script>
