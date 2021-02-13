@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "deploy": "npm run build && firebase deploy",
+    "deploy": "npm run lint && npm run build && firebase deploy",
     "json-watch": "json-server --watch db.json --port 5000"
   },
   "dependencies": {
