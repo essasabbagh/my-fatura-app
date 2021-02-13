@@ -11,6 +11,10 @@
 export default {
   mounted() {
     this.$store.dispatch("isAuthentication");
-  }
+    this.$store.commit(
+      "setSetting",
+      JSON.parse(localStorage.getItem("setting"))
+    );
+  },
 };
 </script>

@@ -4,6 +4,11 @@ import * as fire from "../utili/firebase";
 
 export default createStore({
   state: {
+    setting: {
+      currency: "₺",
+      color: "",
+      limit: 222,
+    },
     error: null,
     success: null,
     isAuth: false,
@@ -13,6 +18,11 @@ export default createStore({
     userid: null,
   },
   mutations: {
+    setSetting(state, bSetting) {
+      state.setting = bSetting;
+      localStorage.setItem("setting", JSON.stringify(bSetting));
+      this.commit("setSuccess", "Change saved Successfuly");
+    },
     setAuth(state, bAuth) {
       state.isAuth = bAuth;
     },
@@ -213,5 +223,6 @@ export default createStore({
     errMessage: (state) => state.error,
     sucMessage: (state) => state.success,
     isAuth: (state) => state.isAuth,
+    allSetting: (state) => state.setting,
   },
 });

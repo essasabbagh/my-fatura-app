@@ -27,7 +27,7 @@
             {{ bill.type }}
           </td>
           <td class="border-grey-light border hover:bg-gray-100 p-3">
-            {{ bill.cost }} $
+            {{ bill.cost }} {{ set.currency }}
           </td>
           <td class="border-grey-light border hover:bg-gray-100 p-3">
             {{ bill.date }}
@@ -145,23 +145,27 @@ export default {
       } else {
         console.log("Delete Canceled");
       }
-
-      // console.log(this.bills);
-    }
+    },
   },
   created() {
     this.$store.dispatch("fetchBills");
   },
+
   computed: {
-    ...mapGetters({ bills: "billList" }),
+    ...mapGetters({
+      bills: "billList",
+      set: "allSetting",
+      errorMessage: "errMessage",
+      successMessage: "sucMessage",
+    }),
     selectedCategory() {
       if (this.filterValue === "all") {
         return this.bills;
       } else {
-        return this.bills.filter(v => v.type == this.filterValue);
+        return this.bills.filter((v) => v.type == this.filterValue);
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
