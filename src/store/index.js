@@ -13,6 +13,8 @@ export default createStore({
     success: null,
     isAuth: false,
     bills: [],
+    pages: 0,
+    pageBills: [],
     categories: [],
     user: {},
     userid: null
@@ -38,6 +40,12 @@ export default createStore({
     },
     setBills(state, pBills) {
       state.bills = pBills;
+    },
+    setPageBills(state, pBills) {
+      state.pageBills = pBills;
+    },
+    setPages(state, nPages) {
+      state.pages = nPages;
     },
     setCategory(state, pCategory) {
       state.categories.push(pCategory);
@@ -205,6 +213,36 @@ export default createStore({
           });
       });
     },
+
+    fetchPageBills({ state, commit }, pageNum) {
+      commit("setUserId");
+      fire.Auth.onAuthStateChanged(() => {
+        const page = fire.Users.doc(`${state.userid}`).collection("bills");
+        // .limit(7);
+        return page.get().then(snap => {
+          // var lastVisible = snap.docs[snap.docs.length - 1];
+          // console.log("last", lastVisible);
+          console.log("length", snap.docs.length);
+          console.log("pages", snap.docs.length % 6);
+          commit("setPages", snap.docs.length % 6);
+          var next = fire.Users.doc(`${state.userid}`)
+            .collection("bills")
+            .startAfter(snap.docs[pageNum])
+            .limit(7)
+            .onSnapshot(snap => {
+              console.log("snap", snap.docs.length);
+              const billList = snap.docs.map(doc => ({
+                id: doc.id,
+                ...doc.data()
+              }));
+              console.log("billList", billList);
+              commit("setPageBills", billList);
+            });
+          console.log(next);
+        });
+      });
+    },
+
     deleteBill({ state, commit }, billId) {
       commit("setUserId");
       fire.Users.doc(`${state.userid}`)
@@ -219,6 +257,8 @@ export default createStore({
   },
   getters: {
     billList: state => state.bills,
+    billPage: state => state.pageBills,
+    getPages: state => state.pages,
     categoriesList: state => state.categories,
     errMessage: state => state.error,
     sucMessage: state => state.success,

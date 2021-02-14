@@ -42,7 +42,6 @@ export default {
   },
   mounted() {
     this.$store.dispatch("fetchCategory");
-    this.$store.dispatch("fetchBills");
   },
 
   computed: {

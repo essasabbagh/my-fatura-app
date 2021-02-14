@@ -1,5 +1,5 @@
 <template>
-  <div class="container overflow-y-scroll">
+  <div class="container">
     <table
       class="w-full flex flex-row flex-no-wrap sm:bg-white rounded-lg overflow-hidden sm:shadow-lg my-5"
     >
@@ -48,9 +48,10 @@
       </tbody>
     </table>
 
-    <div class="flex flex-col items-center">
+    <div class="flex flex-col items-center mt-auto">
       <div class="flex text-gray-700">
         <div
+          @click="fetchPage('-')"
           class="h-12 w-12 mr-1 flex justify-center items-center rounded-full bg-gray-200 cursor-pointer"
         >
           <svg
@@ -70,11 +71,14 @@
         </div>
         <div class="flex h-12 font-medium rounded-full bg-gray-200">
           <div
-            class="w-12 md:flex justify-center items-center hidden  cursor-pointer leading-5 transition duration-150 ease-in  rounded-full  "
+            v-for="page in pages"
+            :key="page"
+            class="w-12 md:flex justify-center items-center hidden  cursor-pointer leading-5 transition duration-150 ease-in  rounded-full"
+            :class="[page == pageNum ? 'bg-teal-600 text-white' : '']"
           >
-            1
+            {{ page }}
           </div>
-          <div
+          <!-- <div
             class="w-12 md:flex justify-center items-center hidden  cursor-pointer leading-5 transition duration-150 ease-in  rounded-full bg-teal-600 text-white "
           >
             2
@@ -103,14 +107,15 @@
             class="w-12 md:flex justify-center items-center hidden  cursor-pointer leading-5 transition duration-150 ease-in  rounded-full  "
           >
             15
-          </div>
-          <div
+          </div> -->
+          <!-- <div
             class="w-12 h-12 md:hidden flex justify-center items-center cursor-pointer leading-5 transition duration-150 ease-in rounded-full bg-teal-600 text-white"
           >
             2
-          </div>
+          </div> -->
         </div>
         <div
+          @click="fetchPage('+')"
           class="h-12 w-12 ml-1 flex justify-center items-center rounded-full bg-gray-200 cursor-pointer"
         >
           <svg
@@ -137,6 +142,12 @@
 import { mapGetters } from "vuex";
 export default {
   props: ["filterValue"],
+  data() {
+    return {
+      num: 0,
+      pageNum: 1
+    };
+  },
   methods: {
     deleteBill(id) {
       console.log(id);
@@ -145,19 +156,45 @@ export default {
       } else {
         console.log("Delete Canceled");
       }
+    },
+    fetchPage(op) {
+      if (op === "+" && this.pages !== this.pageNum) {
+        this.num += 6;
+        this.pageNum += 1;
+        this.$store.dispatch("fetchPageBills", this.num);
+      } else if (op === "-" && this.pageNum > 1) {
+        this.num -= 6;
+        this.pageNum -= 1;
+        this.$store.dispatch("fetchPageBills", this.num);
+      } else {
+        console.log("Wrong", this.pageNum);
+        // console.log("You are in the first page");
+      }
+      // if (this.pages !== this.pageNum) {
+
+      // }
+      // // else if (this.pageNum > 1) {
+      // // }
+      // else {
+      //   console.log("There is no more page!");
+      // }
     }
   },
   created() {
-    this.$store.dispatch("fetchBills");
+    this.$store.dispatch("fetchPageBills", 0);
   },
 
   computed: {
     ...mapGetters({
-      bills: "billList",
+      bills: "billPage",
+      pages: "getPages",
       set: "allSetting",
       errorMessage: "errMessage",
       successMessage: "sucMessage"
     }),
+    // pageCount() {
+    //   return this.pageNum > this.pages ? true : false;
+    // },
     selectedCategory() {
       if (this.filterValue === "all") {
         return this.bills;
