@@ -15,6 +15,6 @@ export default {
       "setSetting",
       JSON.parse(localStorage.getItem("setting"))
     );
-  },
+  }
 };
 </script>

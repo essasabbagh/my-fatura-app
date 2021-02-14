@@ -53,7 +53,7 @@
                   :class="[
                     setting.color == 'teal'
                       ? 'border-gray-500'
-                      : 'border-white hover:border-gray-500',
+                      : 'border-white hover:border-gray-500'
                   ]"
                 >
                   <!-- :class="{
@@ -72,7 +72,7 @@
                   :class="[
                     setting.color == 'yellow'
                       ? 'border-gray-500'
-                      : 'border-white hover:border-gray-500',
+                      : 'border-white hover:border-gray-500'
                   ]"
                 >
                   <a
@@ -87,7 +87,7 @@
                   :class="[
                     setting.color == 'red'
                       ? 'border-gray-500'
-                      : 'border-white hover:border-gray-500',
+                      : 'border-white hover:border-gray-500'
                   ]"
                 >
                   <a
@@ -102,7 +102,7 @@
                   :class="[
                     setting.color == 'blue'
                       ? 'border-gray-500'
-                      : 'border-white hover:border-gray-500',
+                      : 'border-white hover:border-gray-500'
                   ]"
                 >
                   <a
@@ -138,7 +138,6 @@
               <option value="€">EUR</option>
             </select>
           </div>
-
           <!-- <div
             class="options md:flex md:space-x-6 items-center text-gray-700 mt-4"
           >
@@ -178,8 +177,8 @@ export default {
       setting: {
         currency: "₺",
         color: "",
-        limit: 222,
-      },
+        limit: 222
+      }
     };
   },
   mounted() {
@@ -200,13 +199,13 @@ export default {
       } else {
         this.$store.commit("setSetting", this.setting);
       }
-    },
+    }
   },
   computed: {
     ...mapGetters({
       errorMessage: "errMessage",
-      successMessage: "sucMessage",
-    }),
-  },
+      successMessage: "sucMessage"
+    })
+  }
 };
 </script>

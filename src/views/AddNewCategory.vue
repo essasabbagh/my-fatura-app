@@ -11,7 +11,6 @@
       <div class="w-full lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none">
         <div class="px-8 mb-4 text-center">
           <h3 class="pt-4 mb-2 text-2xl">Add New Category</h3>
-          
         </div>
         <form class="px-8 pt-6 pb-8 mb-4 bg-white rounded">
           <!-- Alert Success -->
@@ -94,7 +93,7 @@ export default {
   data() {
     return {
       catName: "",
-      description: "",
+      description: ""
     };
   },
   mounted() {
@@ -109,19 +108,19 @@ export default {
         this.$store.commit("setError", null);
         this.$store.dispatch("createCategory", {
           categoryName: this.catName,
-          description: this.description,
+          description: this.description
         });
         this.catName = null;
         this.description = null;
       }
-    },
+    }
   },
   computed: {
     ...mapGetters({
       errorMessage: "errMessage",
       successMessage: "sucMessage",
-      categories: "categoriesList",
-    }),
-  },
+      categories: "categoriesList"
+    })
+  }
 };
 </script>

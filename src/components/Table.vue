@@ -145,7 +145,7 @@ export default {
       } else {
         console.log("Delete Canceled");
       }
-    },
+    }
   },
   created() {
     this.$store.dispatch("fetchBills");
@@ -156,16 +156,16 @@ export default {
       bills: "billList",
       set: "allSetting",
       errorMessage: "errMessage",
-      successMessage: "sucMessage",
+      successMessage: "sucMessage"
     }),
     selectedCategory() {
       if (this.filterValue === "all") {
         return this.bills;
       } else {
-        return this.bills.filter((v) => v.type == this.filterValue);
+        return this.bills.filter(v => v.type == this.filterValue);
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
