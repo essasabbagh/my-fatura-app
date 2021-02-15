@@ -98,6 +98,7 @@ export default {
   },
   mounted() {
     this.$store.dispatch("fetchCategory");
+    this.$store.commit("setSuccess", null);
   },
   methods: {
     addNewCat() {
