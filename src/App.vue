@@ -21,9 +21,9 @@ export default {
       this.$store.commit("setSetting", {
         currency: "₺",
         color: "",
-        limit: 0,
+        limit: 0
       });
     }
-  },
+  }
 };
 </script>

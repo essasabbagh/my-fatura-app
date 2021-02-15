@@ -182,11 +182,21 @@ export default {
     };
   },
   mounted() {
-    this.$store.commit(
-      "setSetting",
-      JSON.parse(localStorage.getItem("setting"))
-    );
+    const setting = localStorage.getItem("setting");
+    if (setting) {
+      this.$store.commit(
+        "setSetting",
+        JSON.parse(localStorage.getItem("setting"))
+      );
+    } else {
+      this.$store.commit("setSetting", {
+        currency: "₺",
+        color: "",
+        limit: 0
+      });
+    }
     this.setting = JSON.parse(localStorage.getItem("setting"));
+
     this.$store.commit("setSuccess", null);
   },
   methods: {
