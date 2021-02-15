@@ -59,17 +59,17 @@ import { mapGetters } from "vuex";
 export default {
   computed: {
     ...mapGetters({
-      setting: "allSetting",
+      setting: "allSetting"
     }),
     color() {
       return [
         this.setting.color == "teal" ? "bg-teal-500" : "",
         this.setting.color == "red" ? "bg-red-500" : "",
         this.setting.color == "yellow" ? "bg-yellow-500" : "",
-        this.setting.color == "blue" ? "bg-blue-500" : "",
+        this.setting.color == "blue" ? "bg-blue-500" : ""
       ];
-    },
-  },
+    }
+  }
 };
 </script>
 <style>

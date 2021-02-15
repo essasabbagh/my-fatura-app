@@ -62,7 +62,7 @@
                   }" -->
                   <a
                     @click="setColor('teal')"
-                    class="block w-6 h-6 bg-teal-900 rounded-full"
+                    class="block w-6 h-6 bg-teal-500 rounded-full"
                   ></a>
                 </span>
               </li>
