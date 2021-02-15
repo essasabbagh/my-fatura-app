@@ -1,6 +1,7 @@
 <template>
   <nav
-    class="flex items-center justify-between flex-wrap text-gray-900 bg-teal-500 p-6"
+    class="flex items-center justify-between flex-wrap  text-gray-900  p-6"
+    :class="color"
   >
     <div class="flex items-center flex-no-shrink mr-6">
       <span class="w-10 mr-5 text-gray-900 text-4xl"
@@ -53,6 +54,24 @@
   </nav>
 </template>
 
+<script>
+import { mapGetters } from "vuex";
+export default {
+  computed: {
+    ...mapGetters({
+      setting: "allSetting",
+    }),
+    color() {
+      return [
+        this.setting.color == "teal" ? "bg-teal-500" : "",
+        this.setting.color == "red" ? "bg-red-500" : "",
+        this.setting.color == "yellow" ? "bg-yellow-500" : "",
+        this.setting.color == "blue" ? "bg-blue-500" : "",
+      ];
+    },
+  },
+};
+</script>
 <style>
 svg {
   fill: #173834;
