@@ -143,7 +143,7 @@ export default {
   data() {
     return {
       num: 0,
-      pageNum: 1,
+      pageNum: 1
     };
   },
   methods: {
@@ -167,7 +167,7 @@ export default {
       } else {
         console.log("Wrong", this.pageNum);
       }
-    },
+    }
   },
   created() {
     this.$store.dispatch("fetchPageBills", 0);
@@ -179,7 +179,7 @@ export default {
       pages: "getPages",
       set: "allSetting",
       errorMessage: "errMessage",
-      successMessage: "sucMessage",
+      successMessage: "sucMessage"
     }),
     // pageCount() {
     //   return this.pageNum > this.pages ? true : false;
@@ -188,10 +188,10 @@ export default {
       if (this.filterValue === "all") {
         return this.bills;
       } else {
-        return this.bills.filter((v) => v.type == this.filterValue);
+        return this.bills.filter(v => v.type == this.filterValue);
       }
-    },
-  },
+    }
+  }
 };
 </script>
 

@@ -35,11 +35,11 @@ import Table from "../components/Table";
 export default {
   data() {
     return {
-      filterValue: "all",
+      filterValue: "all"
     };
   },
   components: {
-    Table,
+    Table
   },
   mounted() {
     this.$store.dispatch("fetchCategory");
@@ -48,14 +48,14 @@ export default {
     filtering(e) {
       console.log(e);
       this.$store.dispatch("fetchPageBills", 0);
-    },
+    }
   },
 
   computed: {
     ...mapGetters({
       errorMessage: "errMessage",
-      categories: "categoriesList",
-    }),
-  },
+      categories: "categoriesList"
+    })
+  }
 };
 </script>
