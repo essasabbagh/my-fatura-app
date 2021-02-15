@@ -7,6 +7,7 @@
       >
         <p class="w-1/2 mb-2 md:mb-0">Filtering</p>
         <select
+          @input="filtering($event.target.value)"
           v-model="filterValue"
           class="w-full border border-gray-200 p-2 focus:outline-none focus:border-gray-500"
         >
@@ -34,21 +35,27 @@ import Table from "../components/Table";
 export default {
   data() {
     return {
-      filterValue: "all"
+      filterValue: "all",
     };
   },
   components: {
-    Table
+    Table,
   },
   mounted() {
     this.$store.dispatch("fetchCategory");
+  },
+  methods: {
+    filtering(e) {
+      console.log(e);
+      this.$store.dispatch("fetchPageBills", 0);
+    },
   },
 
   computed: {
     ...mapGetters({
       errorMessage: "errMessage",
-      categories: "categoriesList"
-    })
-  }
+      categories: "categoriesList",
+    }),
+  },
 };
 </script>

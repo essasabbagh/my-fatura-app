@@ -5,8 +5,6 @@
     >
       <thead class="text-white">
         <tr
-          v-for="bill in bills"
-          :key="bill.id"
           class="bg-teal-500 flex flex-col flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0"
         >
           <th class="p-3 text-left">Type</th>
@@ -145,7 +143,7 @@ export default {
   data() {
     return {
       num: 0,
-      pageNum: 1
+      pageNum: 1,
     };
   },
   methods: {
@@ -168,17 +166,8 @@ export default {
         this.$store.dispatch("fetchPageBills", this.num);
       } else {
         console.log("Wrong", this.pageNum);
-        // console.log("You are in the first page");
       }
-      // if (this.pages !== this.pageNum) {
-
-      // }
-      // // else if (this.pageNum > 1) {
-      // // }
-      // else {
-      //   console.log("There is no more page!");
-      // }
-    }
+    },
   },
   created() {
     this.$store.dispatch("fetchPageBills", 0);
@@ -190,7 +179,7 @@ export default {
       pages: "getPages",
       set: "allSetting",
       errorMessage: "errMessage",
-      successMessage: "sucMessage"
+      successMessage: "sucMessage",
     }),
     // pageCount() {
     //   return this.pageNum > this.pages ? true : false;
@@ -199,10 +188,10 @@ export default {
       if (this.filterValue === "all") {
         return this.bills;
       } else {
-        return this.bills.filter(v => v.type == this.filterValue);
+        return this.bills.filter((v) => v.type == this.filterValue);
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

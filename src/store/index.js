@@ -7,7 +7,7 @@ export default createStore({
     setting: {
       currency: "₺",
       color: "",
-      limit: 0
+      limit: 0,
     },
     error: null,
     success: null,
@@ -17,7 +17,7 @@ export default createStore({
     pageBills: [],
     categories: [],
     user: {},
-    userid: null
+    userid: null,
   },
   mutations: {
     setSetting(state, bSetting) {
@@ -47,6 +47,7 @@ export default createStore({
     setPages(state, nPages) {
       state.pages = nPages;
     },
+
     setCategory(state, pCategory) {
       state.categories.push(pCategory);
     },
@@ -69,11 +70,11 @@ export default createStore({
       state.user = null;
       localStorage.removeItem("user");
       router.push({ name: "Login" });
-    }
+    },
   },
   actions: {
     isAuthentication({ commit }) {
-      fire.Auth.onAuthStateChanged(user => {
+      fire.Auth.onAuthStateChanged((user) => {
         if (user) {
           console.log("user logged in: ", user.email, user.uid);
           commit("setAuth", true);
@@ -85,12 +86,12 @@ export default createStore({
     },
     login({ commit }, info) {
       fire.logIn(info.email, info.password).then(
-        cred => {
+        (cred) => {
           console.log("cred", cred.user.uid);
           fire.Users.where("uid", "==", `${cred.user.uid}`)
             .get()
-            .then(user => {
-              user.docs.forEach(doc => {
+            .then((user) => {
+              user.docs.forEach((doc) => {
                 commit("setUser", { uid: doc.data().uid, id: doc.id });
                 console.log(doc.id);
               });
@@ -99,7 +100,7 @@ export default createStore({
           commit("setError", null);
           router.push({ name: "Home" });
         },
-        err => {
+        (err) => {
           console.error(err);
           commit("setError", err.message);
         }
@@ -112,7 +113,7 @@ export default createStore({
         .then(() => {
           commit("logout");
         })
-        .catch(err => {
+        .catch((err) => {
           console.error(err.message);
           commit("setError", err.message);
         });
@@ -121,18 +122,18 @@ export default createStore({
     createUser({ commit }, info) {
       fire
         .signIn(info.email, info.password)
-        .then(cred => {
+        .then((cred) => {
           console.log("add user sccess!", cred);
           const today = new Date();
           fire
             .saveUser({ uid: cred.user.uid, createdAt: today, ...info })
-            .then(doc => {
+            .then((doc) => {
               console.log(doc.id);
               commit("setUser", { uid: cred.user.uid, id: doc.id });
               commit("setError", null);
             });
         })
-        .catch(err => {
+        .catch((err) => {
           console.error(err.message);
           commit("setError", err.message);
         });
@@ -140,7 +141,7 @@ export default createStore({
 
     createCategory({ state, commit }, cat) {
       commit("setUserId");
-      fire.Auth.onAuthStateChanged(user => {
+      fire.Auth.onAuthStateChanged((user) => {
         console.log("uid", user.uid);
         console.log("cat", cat);
         fire.database
@@ -153,7 +154,7 @@ export default createStore({
             commit("setCategory", cat);
             commit("setSuccess", "Category added Successfuly");
           })
-          .catch(err => {
+          .catch((err) => {
             console.error("my", err.message);
             commit("setError", err.message);
           });
@@ -167,10 +168,10 @@ export default createStore({
           .collection("users")
           .doc(`${state.userid}`)
           .collection("categories")
-          .onSnapshot(snap => {
-            const catList = snap.docs.map(doc => ({
+          .onSnapshot((snap) => {
+            const catList = snap.docs.map((doc) => ({
               id: doc.id,
-              ...doc.data()
+              ...doc.data(),
             }));
             console.log("catList", catList);
             commit("setCategories", catList);
@@ -182,7 +183,7 @@ export default createStore({
     },
 
     createBill({ state, commit }, bill) {
-      fire.Auth.onAuthStateChanged(user => {
+      fire.Auth.onAuthStateChanged((user) => {
         console.log("uid", user.uid);
         fire.Users.doc(state.userid)
           .collection("bills")
@@ -192,7 +193,7 @@ export default createStore({
             commit("setBill", bill);
             commit("setSuccess", "Bill added Successfuly");
           })
-          .catch(err => {
+          .catch((err) => {
             console.error("my", err.message);
             commit("setError", err.message);
           });
@@ -203,10 +204,10 @@ export default createStore({
       fire.Auth.onAuthStateChanged(() => {
         fire.Users.doc(`${state.userid}`)
           .collection("bills")
-          .onSnapshot(snap => {
-            const billList = snap.docs.map(doc => ({
+          .onSnapshot((snap) => {
+            const billList = snap.docs.map((doc) => ({
               id: doc.id,
-              ...doc.data()
+              ...doc.data(),
             }));
             console.log("billList", billList);
             commit("setBills", billList);
@@ -217,28 +218,48 @@ export default createStore({
     fetchPageBills({ state, commit }, pageNum) {
       commit("setUserId");
       fire.Auth.onAuthStateChanged(() => {
-        const page = fire.Users.doc(`${state.userid}`).collection("bills");
-        // .limit(7);
-        return page.get().then(snap => {
-          // var lastVisible = snap.docs[snap.docs.length - 1];
-          // console.log("last", lastVisible);
-          console.log("length", snap.docs.length);
-          console.log("pages", snap.docs.length % 6);
-          commit("setPages", snap.docs.length % 6);
-          var next = fire.Users.doc(`${state.userid}`)
-            .collection("bills")
+        // if (state.filterValue === "all") {
+        //   var statment = true
+        // } else {
+        //   // page = fire.Users.doc(`${state.userid}`)
+        //   //   .collection("bills")
+        //   //   .where("type", "==", state.filterValue);
+        // }
+
+        // let page = fire.Users.doc(`${state.userid}`).collection("bills");
+        // let temp;
+        // if (filter == "all") {
+        //   temp = "phone";
+        // } else {
+        //   temp = filter;
+        // }
+        // console.log("temp",temp);
+        // .where("type", "==", temp);
+        // .where("type", "==", temp);
+        // const page = fire.Users.doc(`${state.userid}`)
+        //   .collection("bills")
+        //   .where("type", "==", "phone");
+
+        let page = fire.Users.doc(`${state.userid}`).collection("bills");
+        return page.get().then((snap) => {
+          console.log(
+            "length: " +
+              snap.docs.length +
+              " pages: " +
+              Math.ceil(snap.docs.length / 7)
+          );
+          commit("setPages", Math.ceil(snap.docs.length / 7));
+          page
             .startAfter(snap.docs[pageNum])
             .limit(7)
-            .onSnapshot(snap => {
-              console.log("snap", snap.docs.length);
-              const billList = snap.docs.map(doc => ({
+            .onSnapshot((snap) => {
+              const billList = snap.docs.map((doc) => ({
                 id: doc.id,
-                ...doc.data()
+                ...doc.data(),
               }));
-              console.log("billList", billList);
               commit("setPageBills", billList);
             });
-          console.log(next);
+          // console.log(next);
         });
       });
     },
@@ -249,20 +270,20 @@ export default createStore({
         .collection("bills")
         .doc(billId)
         .delete()
-        .catch(err => {
+        .catch((err) => {
           console.error(err);
           commit("setError", err.message);
         });
-    }
+    },
   },
   getters: {
-    billList: state => state.bills,
-    billPage: state => state.pageBills,
-    getPages: state => state.pages,
-    categoriesList: state => state.categories,
-    errMessage: state => state.error,
-    sucMessage: state => state.success,
-    isAuth: state => state.isAuth,
-    allSetting: state => state.setting
-  }
+    billList: (state) => state.bills,
+    billPage: (state) => state.pageBills,
+    getPages: (state) => state.pages,
+    categoriesList: (state) => state.categories,
+    errMessage: (state) => state.error,
+    sucMessage: (state) => state.success,
+    isAuth: (state) => state.isAuth,
+    allSetting: (state) => state.setting,
+  },
 });
