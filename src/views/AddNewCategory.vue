@@ -33,7 +33,7 @@
           <!-- Alert Error -->
           <div
             v-if="errorMessage"
-            class="bg-red-200 px-6 py-4 my-5 rounded-md text-sm flex items-center mx-auto "
+            class="bg-red-200 px-6 py-4 rounded-md text-sm flex items-center mx-auto "
           >
             <svg
               viewBox="0 0 24 24"
@@ -102,9 +102,8 @@ export default {
   },
   methods: {
     addNewCat() {
-      if (this.catName === "") {
+      if (this.catName === "" || this.catName == null) {
         this.$store.commit("setError", "Empty value!");
-        this.$store.commit("setSuccess", null);
       } else {
         this.$store.commit("setError", null);
         this.$store.dispatch("createCategory", {
