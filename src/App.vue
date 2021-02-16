@@ -20,7 +20,7 @@ export default {
     } else {
       this.$store.commit("setSetting", {
         currency: "₺",
-        color: "",
+        color: "teal",
         limit: 0
       });
     }
