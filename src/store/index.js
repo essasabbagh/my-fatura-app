@@ -64,6 +64,12 @@ export default createStore({
         state.userid = null;
       }
     },
+    setUserImage(state, pImage) {
+      state.user.imageUrl = pImage;
+      const userInfo = JSON.parse(localStorage.getItem("user"));
+      userInfo.imageUrl = pImage;
+      localStorage.user = JSON.stringify(userInfo);
+    },
     setUser(state, pUser) {
       state.user = pUser;
       localStorage.user = JSON.stringify(pUser);
@@ -76,7 +82,7 @@ export default createStore({
     },
   },
   actions: {
-    isAuthentication({ state,commit }) {
+    isAuthentication({ state, commit }) {
       commit("setUserId");
       fire.Auth.onAuthStateChanged((user) => {
         if (user) {
@@ -136,12 +142,18 @@ export default createStore({
           console.log("add user sccess!", cred);
           const today = new Date();
           fire
-            .saveUser({ uid: cred.user.uid, createdAt: today, ...info })
+            .saveUser({
+              uid: cred.user.uid,
+              createdAt: today,
+              imageUrl: "",
+              ...info,
+            })
             .then((doc) => {
               commit("setUser", {
                 uid: cred.user.uid,
                 id: doc.id,
                 name: info.name,
+                imageUrl: "",
               });
               commit("setError", null);
               router.push({ name: "Home" });
@@ -345,6 +357,7 @@ export default createStore({
           // Upload completed successfully, now we can get the download URL
           uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
             console.log("File available at", downloadURL);
+            commit("setUserImage", downloadURL);
           });
           commit("setSuccess", "Image uploaded Successfuly");
         }
@@ -360,5 +373,6 @@ export default createStore({
     sucMessage: (state) => state.success,
     isAuth: (state) => state.isAuth,
     allSetting: (state) => state.setting,
+    userInfo: (state) => state.user,
   },
 });

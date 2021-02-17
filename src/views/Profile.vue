@@ -64,11 +64,14 @@
                 @click="$refs.profileImage.click()"
                 class="fas fa-upload absolute top-1/4 left-1/3 text-3xl z-10 text-gray-500 invisible "
               ></i>
-              <img class="object-cover w-full h-full" :src="imageUrl" />
+              <img
+                class="object-cover w-full h-full"
+                :src="userInfo.imageUrl"
+              />
             </div>
             <div>
               <h1 class="text-2xl font-semibold ml-5">
-                {{$store.state.user.name}}
+                {{ userInfo.name }}
               </h1>
             </div>
           </div>
@@ -103,6 +106,7 @@ export default {
     },
     selectImage(event) {
       this.selectedImage = event.target.files[0];
+      console.log(this.selectedImage);
     },
   },
   mounted() {
@@ -112,10 +116,8 @@ export default {
     ...mapGetters({
       errorMessage: "errMessage",
       successMessage: "sucMessage",
+      userInfo: "userInfo",
     }),
-    imageUrl() {
-      return this.selectedImage;
-    },
   },
 };
 </script>
