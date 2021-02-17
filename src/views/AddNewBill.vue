@@ -93,15 +93,26 @@
           <div
             class="options md:flex md:space-x-6 items-center text-gray-700 mt-4"
           >
-            <label for="paid" class="block mb-2 text-gray-700">
-              Has been paid?
+            <label for="paid" class="flex justify-start items-start">
+              <div
+                class="bg-white border-2 rounded border-gray-400 w-6 h-6 flex flex-shrink-0 justify-center items-center mr-2 focus-within:border-blue-500"
+              >
+                <input
+                  v-model="billInfo.hasPaid"
+                  type="checkbox"
+                  name="paid"
+                  id="paid"
+                  class="opacity-0 absolute"
+                />
+                <svg
+                  class="fill-current hidden w-4 h-4 text-green-500 pointer-events-none"
+                  viewBox="0 0 20 20"
+                >
+                  <path d="M0 11l2-2 5 5L18 3l2 2L7 18z" />
+                </svg>
+              </div>
+              <div class="select-none">Has been paid?</div>
             </label>
-            <input
-              v-model="billInfo.hasPaid"
-              type="checkbox"
-              name="paid"
-              id="paid"
-            />
           </div>
 
           <div class="text-sm flex flex-col mt-5">
@@ -143,8 +154,8 @@ export default {
         date: null,
         hasPaid: false,
         type: "select",
-        description: ""
-      }
+        description: "",
+      },
     };
   },
   methods: {
@@ -166,10 +177,10 @@ export default {
           date: null,
           hasPaid: false,
           type: "select",
-          description: ""
+          description: "",
         };
       }
-    }
+    },
   },
   mounted() {
     this.$store.dispatch("fetchCategory");
@@ -179,8 +190,13 @@ export default {
     ...mapGetters({
       errorMessage: "errMessage",
       successMessage: "sucMessage",
-      categories: "categoriesList"
-    })
-  }
+      categories: "categoriesList",
+    }),
+  },
 };
 </script>
+<style scoped>
+input:checked + svg {
+  display: block;
+}
+</style>
