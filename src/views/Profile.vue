@@ -62,7 +62,7 @@
               />
               <i
                 @click="$refs.profileImage.click()"
-                class="fas fa-upload absolute top-1/4 left-1/3 text-3xl z-10 text-gray-500 invisible "
+                class="fas fa-upload absolute top-1/4 left-1/3 text-3xl z-10 text-white shadow-2xl opacity-70 invisible "
               ></i>
               <img
                 class="object-cover w-full h-full"
