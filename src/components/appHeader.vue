@@ -24,7 +24,7 @@
       </button>
     </div>
 
-    <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+    <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto relative">
       <div class="text-sm lg:flex-grow">
         <router-link
           to="/"
@@ -53,7 +53,7 @@
       </div>
       <router-link
         to="/newbill"
-        class="fixed text-white bg-red-500 hover:text-teal-50 hover:bg-red-600 hover:shadow-sm transition-all"
+        class="absolute text-white bg-red-500 hover:text-teal-50 hover:bg-red-600 hover:shadow-sm transition-all"
         ><i class="fas fa-plus"></i
       ></router-link>
     </div>
@@ -88,7 +88,7 @@ export default {
 svg {
   fill: #173834;
 }
-.fixed {
+.absolute {
   text-align: center;
   font-weight: 900;
   width: 4em;
@@ -97,7 +97,7 @@ svg {
   border: 5px solid white;
   border-radius: 50%;
   right: 4em;
-  top: 90px;
+  top: 45px;
   line-height: 3.2em;
   z-index: 5;
 }
