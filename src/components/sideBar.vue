@@ -57,6 +57,14 @@
 
     <div class="mt-auto flex flex-col items-center w-full">
       <router-link
+        v-if="isAuth"
+        to="/profile"
+        class="h-16 px-6 flex justify-center items-center w-full hover:bg-green-300
+					focus:text-blue-500"
+      >
+        <i class="fas fa-user-circle"></i>
+      </router-link>
+      <router-link
         v-if="!isAuth"
         to="/register"
         class="h-16 px-6 flex justify-center items-center w-full hover:bg-green-300

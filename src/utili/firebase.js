@@ -16,10 +16,13 @@ const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 const db = firebaseApp.firestore();
 const auth = firebase.auth();
+const storage = firebase.storage();
 const usersCollection = db.collection("users");
+
 
 export const database = db;
 export const Auth = auth;
+export const upload = storage;
 export const Users = db.collection("users");
 
 // Users Tools

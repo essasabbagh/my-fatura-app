@@ -58,6 +58,15 @@ const routes = [
     }
   },
   {
+    path: "/profile",
+    name: "Profile",
+    components: {
+      default: () => import("../views/Profile.vue"),
+      appHeader,
+      sideBar
+    }
+  },
+  {
     path: "/about",
     name: "About",
     components: {
