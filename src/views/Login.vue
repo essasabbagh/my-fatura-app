@@ -95,18 +95,21 @@ import { mapGetters } from "vuex";
 export default {
   data() {
     return {
-      userInfo: { email: "", password: "" }
+      userInfo: { email: "", password: "" },
     };
   },
   methods: {
     login() {
       this.$store.dispatch("login", this.userInfo);
-    }
+    },
+  },
+  mounted() {
+    this.$store.commit("setSuccess", null);
   },
   computed: {
     ...mapGetters({
-      errorMessage: "errMessage"
-    })
+      errorMessage: "errMessage",
+    }),
   },
   watch: {
     password() {
@@ -115,7 +118,7 @@ export default {
       } else {
         this.$store.commit("setError", null);
       }
-    }
-  }
+    },
+  },
 };
 </script>

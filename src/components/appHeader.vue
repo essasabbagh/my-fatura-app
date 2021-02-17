@@ -37,6 +37,12 @@
           class="block text-xl mt-4 lg:inline-block lg:mt-0 hover:text-teal-50 mr-4"
           >About</router-link
         >
+        <!-- <button
+          @click="upload"
+          class="block text-xl mt-4 lg:inline-block lg:mt-0 hover:text-teal-50 mr-4"
+        >
+          uplaod
+        </button> -->
       </div>
       <div>
         <!-- <router-link
@@ -57,19 +63,25 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
+  data() {
+    return {
+    };
+  },
+  methods: {
+  },
   computed: {
     ...mapGetters({
-      setting: "allSetting"
+      setting: "allSetting",
     }),
     color() {
       return [
         this.setting.color == "teal" ? "bg-teal-500" : "",
         this.setting.color == "red" ? "bg-red-500" : "",
         this.setting.color == "yellow" ? "bg-yellow-500" : "",
-        this.setting.color == "blue" ? "bg-blue-500" : ""
+        this.setting.color == "blue" ? "bg-blue-500" : "",
       ];
-    }
-  }
+    },
+  },
 };
 </script>
 <style>
