@@ -15,12 +15,16 @@ module.exports = {
       green: colors.green,
       white: colors.white,
       black: colors.black,
-      yellow: colors.amber
+      yellow: colors.amber,
     },
-    extend: {}
+    extend: {},
   },
   variants: {
-    extend: {}
+    extend: {
+      // ...
+
+      visibility: ["hover", "focus"],
+    },
   },
-  plugins: []
+  plugins: [],
 };
