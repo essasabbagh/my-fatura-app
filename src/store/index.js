@@ -13,7 +13,8 @@ export default createStore({
     success: null,
     isAuth: false,
     bills: [],
-    pages: 0,
+    lastOfList: 0,
+    pages: 0, // count of pages
     pageBills: [],
     categories: [],
     user: {},
@@ -36,7 +37,10 @@ export default createStore({
       state.pageBills = pBills;
     },
     setPages(state, nPages) {
-      state.pages = nPages;
+      state.pages = nPages; // count of pages
+    },
+    setPage(state, nPage) {
+      state.lastOfList = nPage;
     },
 
     setCategory(state, pCategory) {
@@ -238,7 +242,7 @@ export default createStore({
       });
     },
 
-    fetchPageBills({ state, commit }, pageNum) {
+    fetchPageBills({ state, commit }, obj) {
       fire.Auth.onAuthStateChanged(() => {
         // if (state.filterValue === "all") {
         //   var statment = true
@@ -261,33 +265,40 @@ export default createStore({
         // const page = fire.Users.doc(`${state.userid}`)
         //   .collection("bills")
         //   .where("type", "==", "phone");
+        let op, filterValue;
+        if (obj.catList == "all") {
+          op = "!=";
+          filterValue = "";
+        } else {
+          op = "in";
+          filterValue = obj.catList;
+        }
+        // console.log(op, filterValue);
+        let page = fire.Users.doc(`${state.userid}`)
+          .collection("bills")
+          .where("type", op, filterValue);
+        return page.onSnapshot((snap) => {
+          console.log(
+            "length: " +
+              snap.docs.length +
+              " pages: " +
+              Math.ceil(snap.docs.length / 7)
+          );
+          commit("setPages", Math.ceil(snap.docs.length / 7)); // count of pages
+          // commit("setPage", Math.ceil(snap.docs.length / 7)); // current page
 
-        let page = fire.Users.doc(`${state.userid}`).collection("bills");
-        return page
-          .get()
-          .then((snap) => {
-            console.log(
-              "length: " +
-                snap.docs.length +
-                " pages: " +
-                Math.ceil(snap.docs.length / 7)
-            );
-            commit("setPages", Math.ceil(snap.docs.length / 7));
-            page
-              .startAfter(snap.docs[pageNum])
-              .limit(7)
-              .onSnapshot((snap) => {
-                const billList = snap.docs.map((doc) => ({
-                  id: doc.id,
-                  ...doc.data(),
-                }));
-                commit("setPageBills", billList);
-              });
-          })
-          .catch((err) => {
-            console.error(err.message);
-            commit("setError", err.message);
-          });
+          page
+            .startAfter(snap.docs[state.lastOfList])
+            .limit(7)
+            .onSnapshot((snap) => {
+              const billList = snap.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data(),
+              }));
+              console.log("bills", billList);
+              commit("setPageBills", billList);
+            });
+        });
       });
     },
 

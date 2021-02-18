@@ -17,7 +17,7 @@
       </thead>
       <tbody class="flex-1 sm:flex-none">
         <tr
-          v-for="bill in selectedCategory"
+          v-for="bill in bills"
           :key="bill.id"
           class="flex flex-col flex-no wrap sm:table-row mb-2 sm:mb-0"
         >
@@ -72,7 +72,7 @@
             v-for="page in pages"
             :key="page"
             class="w-12 md:flex justify-center items-center hidden  cursor-pointer leading-5 transition duration-150 ease-in  rounded-full"
-            :class="[page == pageNum ? 'bg-teal-600 text-white' : '']"
+            :class="[page == currentPage ? 'bg-teal-600 text-white' : '']"
           >
             {{ page }}
           </div>
@@ -139,13 +139,13 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
-  props: ["filterValue"],
-  data() {
-    return {
-      num: 0,
-      pageNum: 1
-    };
-  },
+  props: ["filteredBill", "currentPage", "pagesCount"],
+  // data() {
+  //   return {
+  //     num: 0,
+  //     lastOfList: 1,
+  //   };
+  // },
   methods: {
     deleteBill(id) {
       console.log(id);
@@ -156,22 +156,12 @@ export default {
       }
     },
     fetchPage(op) {
-      if (op === "+" && this.pages !== this.pageNum) {
-        this.num += 6;
-        this.pageNum += 1;
-        this.$store.dispatch("fetchPageBills", this.num);
-      } else if (op === "-" && this.pageNum > 1) {
-        this.num -= 6;
-        this.pageNum -= 1;
-        this.$store.dispatch("fetchPageBills", this.num);
-      } else {
-        console.log("Wrong", this.pageNum);
-      }
-    }
+      this.$emit("selectedPage", op);
+    },
   },
-  created() {
-    this.$store.dispatch("fetchPageBills", 0);
-  },
+  // created() {
+  //   this.$store.dispatch("fetchPageBills", 0);
+  // },
 
   computed: {
     ...mapGetters({
@@ -179,19 +169,20 @@ export default {
       pages: "getPages",
       set: "allSetting",
       errorMessage: "errMessage",
-      successMessage: "sucMessage"
+      successMessage: "sucMessage",
     }),
     // pageCount() {
-    //   return this.pageNum > this.pages ? true : false;
+    //   return this.lastOfList > this.pages ? true : false;
     // },
-    selectedCategory() {
-      if (this.filterValue === "all") {
-        return this.bills;
-      } else {
-        return this.bills.filter(v => v.type == this.filterValue);
-      }
-    }
-  }
+
+    // selectedCategory() {
+    //   if (this.filteredBill === "all") {
+    //     return this.bills;
+    //   } else {
+    //     return this.bills.filter((v) => v.type == this.filteredBill);
+    //   }
+    // },
+  },
 };
 </script>
 
