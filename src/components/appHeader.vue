@@ -1,6 +1,6 @@
 <template>
   <nav
-    class="flex items-center justify-between flex-wrap  text-gray-900  p-6"
+    class="flex items-center justify-between flex-wrap text-gray-900 p-6"
     :class="color"
   >
     <div class="flex items-center flex-no-shrink mr-6">
@@ -39,20 +39,8 @@
           class="block text-xl mt-4 lg:inline-block lg:mt-0 hover:text-teal-50 mr-4"
           >About</router-link
         >
-        <!-- <button
-          @click="upload"
-          class="block text-xl mt-4 lg:inline-block lg:mt-0 hover:text-teal-50 mr-4"
-        >
-          uplaod
-        </button> -->
       </div>
-      <div>
-        <!-- <router-link
-          to="/new"
-          class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-50 hover:bg-teal-700 mt-4 lg:mt-0"
-          >Add New</router-link
-        > -->
-      </div>
+      <div></div>
       <router-link
         to="/newbill"
         class="absolute text-white bg-red-500 hover:text-teal-50 hover:bg-red-600 hover:shadow-sm transition-all"
@@ -71,17 +59,17 @@ export default {
   methods: {},
   computed: {
     ...mapGetters({
-      setting: "allSetting"
+      setting: "allSetting",
     }),
     color() {
       return [
         this.setting.color == "teal" ? "bg-teal-500" : "",
         this.setting.color == "red" ? "bg-red-500" : "",
         this.setting.color == "yellow" ? "bg-yellow-500" : "",
-        this.setting.color == "blue" ? "bg-blue-500" : ""
+        this.setting.color == "blue" ? "bg-blue-500" : "",
       ];
-    }
-  }
+    },
+  },
 };
 </script>
 <style>
