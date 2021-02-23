@@ -118,7 +118,7 @@ export default createStore({
                 commit("setUser", { uid: doc.data().uid, id: doc.id });
               });
             });
-          router.push({ name: "Home" });
+          router.replace({ name: "Home" });
         },
         err => {
           console.error(err);
@@ -160,7 +160,7 @@ export default createStore({
                 imageUrl: ""
               });
               commit("setError", null);
-              router.push({ name: "Home" });
+              router.replace({ name: "Home" });
             });
         })
         .catch(err => {

@@ -66,7 +66,7 @@
       </router-link>
       <router-link
         v-if="!isAuth"
-        to="/register"
+        to="/login"
         class="h-16 px-6 flex justify-center items-center w-full hover:bg-green-300
 					focus:text-green-500"
       >
