@@ -24,7 +24,9 @@
       </button>
     </div>
 
-    <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto relative">
+    <div
+      class="w-full block flex-grow lg:flex lg:items-center lg:w-auto relative"
+    >
       <div class="text-sm lg:flex-grow">
         <router-link
           to="/"
@@ -64,24 +66,22 @@
 import { mapGetters } from "vuex";
 export default {
   data() {
-    return {
-    };
+    return {};
   },
-  methods: {
-  },
+  methods: {},
   computed: {
     ...mapGetters({
-      setting: "allSetting",
+      setting: "allSetting"
     }),
     color() {
       return [
         this.setting.color == "teal" ? "bg-teal-500" : "",
         this.setting.color == "red" ? "bg-red-500" : "",
         this.setting.color == "yellow" ? "bg-yellow-500" : "",
-        this.setting.color == "blue" ? "bg-blue-500" : "",
+        this.setting.color == "blue" ? "bg-blue-500" : ""
       ];
-    },
-  },
+    }
+  }
 };
 </script>
 <style>

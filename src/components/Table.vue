@@ -140,12 +140,6 @@
 import { mapGetters } from "vuex";
 export default {
   props: ["filteredBill", "currentPage", "pagesCount"],
-  // data() {
-  //   return {
-  //     num: 0,
-  //     lastOfList: 1,
-  //   };
-  // },
   methods: {
     deleteBill(id) {
       console.log(id);
@@ -157,32 +151,17 @@ export default {
     },
     fetchPage(op) {
       this.$emit("selectedPage", op);
-    },
+    }
   },
-  // created() {
-  //   this.$store.dispatch("fetchPageBills", 0);
-  // },
-
   computed: {
     ...mapGetters({
       bills: "billPage",
       pages: "getPages",
       set: "allSetting",
       errorMessage: "errMessage",
-      successMessage: "sucMessage",
-    }),
-    // pageCount() {
-    //   return this.lastOfList > this.pages ? true : false;
-    // },
-
-    // selectedCategory() {
-    //   if (this.filteredBill === "all") {
-    //     return this.bills;
-    //   } else {
-    //     return this.bills.filter((v) => v.type == this.filteredBill);
-    //   }
-    // },
-  },
+      successMessage: "sucMessage"
+    })
+  }
 };
 </script>
 
@@ -196,7 +175,6 @@ export default {
     display: none;
   }
 }
-
 td:not(:last-child) {
   border-bottom: 0;
 }

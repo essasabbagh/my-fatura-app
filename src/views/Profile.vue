@@ -97,7 +97,7 @@ import { mapGetters } from "vuex";
 export default {
   data() {
     return {
-      selectedImage: "",
+      selectedImage: ""
     };
   },
   methods: {
@@ -107,7 +107,7 @@ export default {
     selectImage(event) {
       this.selectedImage = event.target.files[0];
       console.log(this.selectedImage);
-    },
+    }
   },
   mounted() {
     this.$store.commit("setSuccess", null);
@@ -116,13 +116,13 @@ export default {
     ...mapGetters({
       errorMessage: "errMessage",
       successMessage: "sucMessage",
-      userInfo: "userInfo",
-    }),
-  },
+      userInfo: "userInfo"
+    })
+  }
 };
 </script>
 
-<style scoped>
+<style scope>
 .avatar:hover i {
   visibility: visible;
 }

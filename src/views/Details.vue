@@ -39,14 +39,14 @@ import { mapGetters } from "vuex";
 import Table from "../components/Table";
 export default {
   components: {
-    Table,
+    Table
   },
   data() {
     return {
       filterValue: "all",
       pagesCount: 1,
       lastOfList: 0,
-      currentPage: 1,
+      currentPage: 1
     };
   },
   mounted() {
@@ -62,17 +62,17 @@ export default {
         // console.log(catList, this.lastOfList);
         this.$store.dispatch("fetchPageBills", {
           catList: "all",
-          lastOfList: this.lastOfList,
+          lastOfList: this.lastOfList
         });
       } else {
         const selectedCat = this.categories.filter(
-          (cat) => cat.categoryName == this.filterValue
+          cat => cat.categoryName == this.filterValue
         );
-        catList = selectedCat.map((cat) => cat.categoryName);
+        catList = selectedCat.map(cat => cat.categoryName);
         console.log("lastOfList", this.lastOfList);
         this.$store.dispatch("fetchPageBills", {
           catList: catList,
-          lastOfList: this.lastOfList,
+          lastOfList: this.lastOfList
         });
       }
       this.$store.commit("setPages", this.lastOfList); // for page bar
@@ -114,12 +114,12 @@ export default {
       //   // console.log(catListName);
       //   this.$store.dispatch("fetchPageBills", catListName ,0);
       // }
-    },
+    }
   },
 
   computed: {
     catList() {
-      return this.categories.map((cat) => cat.categoryName);
+      return this.categories.map(cat => cat.categoryName);
     },
     billListlength() {
       return this.bills.length;
@@ -128,8 +128,8 @@ export default {
       errorMessage: "errMessage",
       categories: "categoriesList",
       bills: "billList",
-      pages: "getPages",
-    }),
-  },
+      pages: "getPages"
+    })
+  }
 };
 </script>

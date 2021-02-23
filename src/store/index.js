@@ -7,7 +7,7 @@ export default createStore({
     setting: {
       currency: "₺",
       color: "teal",
-      limit: 0,
+      limit: 0
     },
     error: null,
     success: null,
@@ -18,7 +18,7 @@ export default createStore({
     pageBills: [],
     categories: [],
     user: {},
-    userid: null,
+    userid: null
   },
   mutations: {
     setSetting(state, bSetting) {
@@ -83,22 +83,22 @@ export default createStore({
       localStorage.removeItem("user");
       localStorage.removeItem("setting");
       router.push({ name: "Login" });
-    },
+    }
   },
   actions: {
     isAuthentication({ state, commit }) {
       commit("setUserId");
-      fire.Auth.onAuthStateChanged((user) => {
+      fire.Auth.onAuthStateChanged(user => {
         if (user) {
           console.log("user logged in: ", user.email, user.uid);
           commit("setAuth", true);
           fire.Users.doc(`${state.userid}`)
             .get()
-            .then((snap) => {
+            .then(snap => {
               console.log("from cloud", snap.data().name);
               console.log("from local", state.user.name);
             })
-            .catch((err) => {
+            .catch(err => {
               console.error(err.message);
               commit("setError", err.message);
             });
@@ -110,17 +110,17 @@ export default createStore({
     },
     login({ commit }, info) {
       fire.logIn(info.email, info.password).then(
-        (cred) => {
+        cred => {
           fire.Users.where("uid", "==", `${cred.user.uid}`)
             .get()
-            .then((user) => {
-              user.docs.forEach((doc) => {
+            .then(user => {
+              user.docs.forEach(doc => {
                 commit("setUser", { uid: doc.data().uid, id: doc.id });
               });
             });
           router.push({ name: "Home" });
         },
-        (err) => {
+        err => {
           console.error(err);
           commit("setError", err.message);
         }
@@ -133,7 +133,7 @@ export default createStore({
         .then(() => {
           commit("logout");
         })
-        .catch((err) => {
+        .catch(err => {
           console.error(err.message);
           commit("setError", err.message);
         });
@@ -142,7 +142,7 @@ export default createStore({
     createUser({ commit }, info) {
       fire
         .signIn(info.email, info.password)
-        .then((cred) => {
+        .then(cred => {
           console.log("add user sccess!", cred);
           const today = new Date();
           fire
@@ -150,27 +150,27 @@ export default createStore({
               uid: cred.user.uid,
               createdAt: today,
               imageUrl: "",
-              ...info,
+              ...info
             })
-            .then((doc) => {
+            .then(doc => {
               commit("setUser", {
                 uid: cred.user.uid,
                 id: doc.id,
                 name: info.name,
-                imageUrl: "",
+                imageUrl: ""
               });
               commit("setError", null);
               router.push({ name: "Home" });
             });
         })
-        .catch((err) => {
+        .catch(err => {
           console.error(err.message);
           commit("setError", err.message);
         });
     },
 
     createCategory({ state, commit }, cat) {
-      fire.Auth.onAuthStateChanged((user) => {
+      fire.Auth.onAuthStateChanged(user => {
         console.log("uid", user.uid);
         console.log("cat", cat);
         fire.database
@@ -183,7 +183,7 @@ export default createStore({
             commit("setCategory", cat);
             commit("setSuccess", "Category added Successfuly");
           })
-          .catch((err) => {
+          .catch(err => {
             console.error(err.message);
             commit("setError", err.message);
           });
@@ -196,10 +196,10 @@ export default createStore({
           .collection("users")
           .doc(`${state.userid}`)
           .collection("categories")
-          .onSnapshot((snap) => {
-            const catList = snap.docs.map((doc) => ({
+          .onSnapshot(snap => {
+            const catList = snap.docs.map(doc => ({
               id: doc.id,
-              ...doc.data(),
+              ...doc.data()
             }));
             console.log("catList", catList);
             commit("setCategories", catList);
@@ -211,7 +211,7 @@ export default createStore({
     },
 
     createBill({ state, commit }, bill) {
-      fire.Auth.onAuthStateChanged((user) => {
+      fire.Auth.onAuthStateChanged(user => {
         console.log("uid", user.uid);
         fire.Users.doc(state.userid)
           .collection("bills")
@@ -221,7 +221,7 @@ export default createStore({
             commit("setBill", bill);
             commit("setSuccess", "Bill added Successfuly");
           })
-          .catch((err) => {
+          .catch(err => {
             console.error(err.message);
             commit("setError", err.message);
           });
@@ -231,10 +231,10 @@ export default createStore({
       fire.Auth.onAuthStateChanged(() => {
         fire.Users.doc(`${state.userid}`)
           .collection("bills")
-          .onSnapshot((snap) => {
-            const billList = snap.docs.map((doc) => ({
+          .onSnapshot(snap => {
+            const billList = snap.docs.map(doc => ({
               id: doc.id,
-              ...doc.data(),
+              ...doc.data()
             }));
             console.log("billList", billList);
             commit("setBills", billList);
@@ -277,7 +277,7 @@ export default createStore({
         let page = fire.Users.doc(`${state.userid}`)
           .collection("bills")
           .where("type", op, filterValue);
-        return page.onSnapshot((snap) => {
+        return page.onSnapshot(snap => {
           console.log(
             "length: " +
               snap.docs.length +
@@ -290,10 +290,10 @@ export default createStore({
           page
             .startAfter(snap.docs[state.lastOfList])
             .limit(7)
-            .onSnapshot((snap) => {
-              const billList = snap.docs.map((doc) => ({
+            .onSnapshot(snap => {
+              const billList = snap.docs.map(doc => ({
                 id: doc.id,
-                ...doc.data(),
+                ...doc.data()
               }));
               console.log("bills", billList);
               commit("setPageBills", billList);
@@ -307,7 +307,7 @@ export default createStore({
         .collection("bills")
         .doc(billId)
         .delete()
-        .catch((err) => {
+        .catch(err => {
           console.error(err);
           commit("setError", err.message);
         });
@@ -317,11 +317,11 @@ export default createStore({
       fire.Auth.onAuthStateChanged(() => {
         fire.Users.doc(`${state.userid}`)
           .get()
-          .then((snap) => {
+          .then(snap => {
             console.log("snap", snap.data().name);
             console.log("user", state.user);
           })
-          .catch((err) => {
+          .catch(err => {
             console.error(err.message);
             commit("setError", err.message);
           });
@@ -329,7 +329,7 @@ export default createStore({
       console.log(state.user);
       const storageRef = fire.upload.ref();
       const metadata = {
-        contentType: "image/jpg",
+        contentType: "image/jpg"
       };
       const uploadTask = storageRef
         .child("images/" + selectedImage.name)
@@ -338,14 +338,14 @@ export default createStore({
       uploadTask.on(
         "state_changed",
         // fire.upload.TaskEvent.STATE_CHANGED, // or 'state_changed'
-        (snapshot) => {
+        snapshot => {
           console.log(snapshot);
           // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
           let progress =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
           console.log("Upload is " + progress + "% done");
         },
-        (error) => {
+        error => {
           commit("setError", error.message);
           // A full list of error codes is available at
           // https://firebase.google.com/docs/storage/web/handle-errors
@@ -366,24 +366,24 @@ export default createStore({
         },
         () => {
           // Upload completed successfully, now we can get the download URL
-          uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
+          uploadTask.snapshot.ref.getDownloadURL().then(downloadURL => {
             console.log("File available at", downloadURL);
             commit("setUserImage", downloadURL);
           });
           commit("setSuccess", "Image uploaded Successfuly");
         }
       );
-    },
+    }
   },
   getters: {
-    billList: (state) => state.bills,
-    billPage: (state) => state.pageBills,
-    getPages: (state) => state.pages,
-    categoriesList: (state) => state.categories,
-    errMessage: (state) => state.error,
-    sucMessage: (state) => state.success,
-    isAuth: (state) => state.isAuth,
-    allSetting: (state) => state.setting,
-    userInfo: (state) => state.user,
-  },
+    billList: state => state.bills,
+    billPage: state => state.pageBills,
+    getPages: state => state.pages,
+    categoriesList: state => state.categories,
+    errMessage: state => state.error,
+    sucMessage: state => state.success,
+    isAuth: state => state.isAuth,
+    allSetting: state => state.setting,
+    userInfo: state => state.user
+  }
 });
