@@ -1,15 +1,17 @@
 <template>
   <nav
-    class="flex items-center justify-between flex-wrap text-gray-900 p-6"
+    class="flex items-center justify-between text-gray-900 p-6"
     :class="color"
   >
     <div class="flex items-center flex-no-shrink mr-6">
       <span class="w-10 mr-5 text-gray-900 text-4xl"
         ><i class="fas fa-wallet"></i
       ></span>
-      <span class="font-semibold text-2xl tracking-tight">My Fatura</span>
+      <span class="font-semibold text-2xl w-0 invisible sm:w-max sm:visible"
+        >My Fatura</span
+      >
     </div>
-    <div class="block lg:hidden">
+    <!-- <div class="block lg:hidden">
       <button
         class="flex items-center px-3 py-2 border rounded border-teal-light hover:text-teal-50 hover:border-white"
       >
@@ -22,21 +24,19 @@
           <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
         </svg>
       </button>
-    </div>
+    </div> -->
 
-    <div
-      class="w-full block flex-grow lg:flex lg:items-center lg:w-auto relative"
-    >
+    <div class="w-full flex-grow flex items-center relative">
       <div class="text-sm lg:flex-grow">
         <router-link
           to="/"
-          class="block text-xl mt-4 lg:inline-block lg:mt-0 hover:text-teal-50 mr-4"
+          class="text-xl inline-block mt-0 hover:text-teal-50 mr-4"
           >Home</router-link
         >
 
         <router-link
           to="/about"
-          class="block text-xl mt-4 lg:inline-block lg:mt-0 hover:text-teal-50 mr-4"
+          class="text-xl inline-block mt-0 hover:text-teal-50 mr-4"
           >About</router-link
         >
       </div>
@@ -88,5 +88,10 @@ svg {
   top: 45px;
   line-height: 3.2em;
   z-index: 5;
+}
+@media (max-width: 640px) {
+  .absolute {
+      right: 1em;
+  }
 }
 </style>
