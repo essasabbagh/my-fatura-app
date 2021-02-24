@@ -11,21 +11,6 @@
         >My Fatura</span
       >
     </div>
-    <!-- <div class="block lg:hidden">
-      <button
-        class="flex items-center px-3 py-2 border rounded border-teal-light hover:text-teal-50 hover:border-white"
-      >
-        <svg
-          class="h-3 w-3"
-          viewBox="0 0 20 20"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <title>Menu</title>
-          <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-        </svg>
-      </button>
-    </div> -->
-
     <div class="w-full flex-grow flex items-center relative">
       <div class="text-sm lg:flex-grow">
         <router-link
@@ -53,10 +38,6 @@
 <script>
 import { mapGetters } from "vuex";
 export default {
-  data() {
-    return {};
-  },
-  methods: {},
   computed: {
     ...mapGetters({
       setting: "allSetting",
@@ -91,7 +72,7 @@ svg {
 }
 @media (max-width: 640px) {
   .absolute {
-      right: 1em;
+    right: 1em;
   }
 }
 </style>
