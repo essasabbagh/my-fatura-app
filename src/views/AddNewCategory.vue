@@ -102,7 +102,7 @@ export default {
   data() {
     return {
       catName: "",
-      description: "",
+      description: ""
     };
   },
   mounted() {
@@ -117,19 +117,19 @@ export default {
         this.$store.commit("setError", null);
         this.$store.dispatch("createCategory", {
           categoryName: this.catName,
-          description: this.description,
+          description: this.description
         });
         this.catName = null;
         this.description = null;
       }
-    },
+    }
   },
   computed: {
     ...mapGetters({
       errorMessage: "errMessage",
       successMessage: "sucMessage",
-      categories: "categoriesList",
-    }),
-  },
+      categories: "categoriesList"
+    })
+  }
 };
 </script>

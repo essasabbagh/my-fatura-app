@@ -7,6 +7,6 @@
 <script>
 import YearChart from "../components/YearChart";
 export default {
-  components: { YearChart },
+  components: { YearChart }
 };
 </script>

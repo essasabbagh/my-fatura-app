@@ -17,7 +17,7 @@ export default {
       options: {
         legend: {
           show: true,
-          position: "right",
+          position: "right"
         },
         // annotations: {
         //   yaxis: [
@@ -36,18 +36,18 @@ export default {
         //   ]
         // },
         chart: {
-          id: "vuechart-example",
+          id: "vuechart-example"
         },
         xaxis: {
-          categories: ["monthes"],
-        },
+          categories: ["monthes"]
+        }
       },
       series: [
         {
           name: "series-1",
-          data: [50, 55],
-        },
-      ],
+          data: [50, 55]
+        }
+      ]
     };
   },
   methods: {
@@ -81,7 +81,7 @@ export default {
         res[month].data.push(parseInt(value.cost));
         return res;
       }, {});
-      var newRes = resulte.map((e) => {
+      var newRes = resulte.map(e => {
         const dataSum = [e.data.reduce((a, b) => a + b, 0)];
         return { name: e.name, data: dataSum };
       });
@@ -97,7 +97,7 @@ export default {
         "Sep",
         "Oct",
         "Nov",
-        "Dec",
+        "Dec"
       ];
       this.series = newRes;
       let newArr = this.series;
@@ -106,19 +106,19 @@ export default {
       }
       // console.log(newArr);
       // this.options.xaxis.categories = newArr;
-    },
+    }
   },
   created() {
     this.$store.dispatch("fetchBills");
     this.newTest();
   },
   computed: {
-    ...mapGetters({ bills: "billList" }),
+    ...mapGetters({ bills: "billList" })
     // allDate() {
     //   return {
     //     billDate: this.bills.map((obj) => new Date(obj.date).getTime()),
     //   };
     // },
-  },
+  }
 };
 </script>

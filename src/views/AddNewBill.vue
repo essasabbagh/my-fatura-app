@@ -170,8 +170,8 @@ export default {
         date: null,
         hasPaid: false,
         type: "select",
-        description: "",
-      },
+        description: ""
+      }
     };
   },
   methods: {
@@ -193,10 +193,10 @@ export default {
           date: null,
           hasPaid: false,
           type: "select",
-          description: "",
+          description: ""
         };
       }
-    },
+    }
   },
   mounted() {
     this.$store.dispatch("fetchCategory");
@@ -206,9 +206,9 @@ export default {
     ...mapGetters({
       errorMessage: "errMessage",
       successMessage: "sucMessage",
-      categories: "categoriesList",
-    }),
-  },
+      categories: "categoriesList"
+    })
+  }
 };
 </script>
 <style scoped>
