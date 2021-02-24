@@ -5,7 +5,9 @@
       <!-- Col -->
       <div
         class="w-full h-auto bg-gray-400 hidden lg:block lg:w-1/2 bg-cover rounded-l-lg"
-        style="background-image: url('https://source.unsplash.com/MI8He1NWPWg/600x800')"
+        style="
+          background-image: url('https://source.unsplash.com/MI8He1NWPWg/600x800');
+        "
       ></div>
       <!-- Col -->
       <div class="w-full lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none">
@@ -16,7 +18,7 @@
           <!-- Alert Success -->
           <div
             v-if="successMessage"
-            class="bg-green-200 px-6 py-4 rounded-md text-sm flex items-center mx-auto "
+            class="bg-green-200 px-6 py-4 rounded-md text-sm flex items-center mx-auto"
           >
             <svg
               viewBox="0 0 24 24"
@@ -33,7 +35,7 @@
           <!-- Alert Error -->
           <div
             v-if="errorMessage"
-            class="bg-red-200 px-6 py-4 rounded-md text-sm flex items-center mx-auto "
+            class="bg-red-200 px-6 py-4 rounded-md text-sm flex items-center mx-auto"
           >
             <svg
               viewBox="0 0 24 24"
@@ -67,18 +69,25 @@
               v-model="description"
               id="description"
               rows="2"
-              class=" appearance-none w-full border border-gray-200 p-2 focus:outline-none focus:border-gray-500"
+              class="appearance-none w-full border border-gray-200 p-2 focus:outline-none focus:border-gray-500"
               placeholder="Enter your description"
             ></textarea>
           </div>
 
-          <div class="mb-6 mt-6 text-center">
+          <div class="mb-6 mt-6 text-center flex flex-row justify-between">
             <button
               @click="addNewCat"
-              class="w-full px-4 py-2 font-bold text-white bg-teal-500 rounded-full hover:bg-teal-700 focus:outline-none focus:shadow-outline transition-all"
+              class="w-full mt-2 mr-2 px-4 py-2 font-bold text-white bg-teal-500 rounded-full hover:bg-teal-700 focus:outline-none focus:shadow-outline transition-all"
               type="button"
             >
               Add
+            </button>
+            <button
+              @click="$router.go(-1)"
+              class="w-full mt-2 px-4 py-2 font-bold text-white bg-gray-500 rounded-full hover:bg-gray-700 focus:outline-none focus:shadow-outline transition-all"
+              type="button"
+            >
+              Cancel
             </button>
           </div>
           <hr class="mb-6 border-t" />
@@ -93,7 +102,7 @@ export default {
   data() {
     return {
       catName: "",
-      description: ""
+      description: "",
     };
   },
   mounted() {
@@ -108,19 +117,19 @@ export default {
         this.$store.commit("setError", null);
         this.$store.dispatch("createCategory", {
           categoryName: this.catName,
-          description: this.description
+          description: this.description,
         });
         this.catName = null;
         this.description = null;
       }
-    }
+    },
   },
   computed: {
     ...mapGetters({
       errorMessage: "errMessage",
       successMessage: "sucMessage",
-      categories: "categoriesList"
-    })
-  }
+      categories: "categoriesList",
+    }),
+  },
 };
 </script>

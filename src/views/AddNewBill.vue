@@ -5,7 +5,9 @@
       <!-- Col -->
       <div
         class="w-full h-auto bg-gray-400 hidden lg:block lg:w-1/2 bg-cover rounded-l-lg"
-        style="background-image: url('https://source.unsplash.com/5fNmWej4tAA/600x800')"
+        style="
+          background-image: url('https://source.unsplash.com/5fNmWej4tAA/600x800');
+        "
       ></div>
       <!-- Col -->
       <div class="w-full lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none">
@@ -16,7 +18,7 @@
           <!-- Alert Success -->
           <div
             v-if="successMessage"
-            class="bg-green-200 px-6 py-4 rounded-md text-sm flex items-center mx-auto "
+            class="bg-green-200 px-6 py-4 rounded-md text-sm flex items-center mx-auto"
           >
             <svg
               viewBox="0 0 24 24"
@@ -33,7 +35,7 @@
           <!-- Alert Error -->
           <div
             v-if="errorMessage"
-            class="bg-red-200 px-6 py-4 rounded-md text-sm flex items-center mx-auto "
+            class="bg-red-200 px-6 py-4 rounded-md text-sm flex items-center mx-auto"
           >
             <svg
               viewBox="0 0 24 24"
@@ -48,9 +50,7 @@
           </div>
           <!-- End Alert Error -->
           <div class="mb-2">
-            <label class="block mb-2 text-gray-700" for="cost">
-              Cost:
-            </label>
+            <label class="block mb-2 text-gray-700" for="cost"> Cost: </label>
             <input
               v-model="billInfo.cost"
               class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
@@ -60,9 +60,7 @@
             />
           </div>
           <div class="mb-2">
-            <label class="block mb-2 text-gray-700" for="date">
-              Date:
-            </label>
+            <label class="block mb-2 text-gray-700" for="date"> Date: </label>
             <input
               v-model="billInfo.date"
               class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
@@ -85,8 +83,9 @@
                 v-for="category in categories"
                 :key="category.id"
                 :value="category.categoryName"
-                >{{ category.categoryName }}</option
               >
+                {{ category.categoryName }}
+              </option>
             </select>
           </div>
 
@@ -122,7 +121,7 @@
             <textarea
               v-model="billInfo.description"
               rows="2"
-              class=" appearance-none w-full border border-gray-200 p-2 focus:outline-none focus:border-gray-500"
+              class="appearance-none w-full border border-gray-200 p-2 focus:outline-none focus:border-gray-500"
               placeholder="Enter your description"
             ></textarea>
           </div>
@@ -136,13 +135,22 @@
               Add New Category <i class="fas fa-external-link-alt"></i>
             </a>
             <!-- <hr class="my-5 border-t" /> -->
-            <button
-              @click="createNewBill"
-              class="w-full mt-2 px-4 py-2 font-bold text-white bg-teal-500 rounded-full hover:bg-teal-700 focus:outline-none focus:shadow-outline transition-all"
-              type="button"
-            >
-              Add
-            </button>
+            <div class="flex flex-row justify-between">
+              <button
+                @click="createNewBill"
+                class="w-full mt-2 mr-2 px-4 py-2 font-bold text-white bg-teal-500 rounded-full hover:bg-teal-700 focus:outline-none focus:shadow-outline transition-all"
+                type="button"
+              >
+                Add
+              </button>
+              <button
+                @click="$router.go(-1)"
+                class="w-full mt-2 px-4 py-2 font-bold text-white bg-gray-500 rounded-full hover:bg-gray-700 focus:outline-none focus:shadow-outline transition-all"
+                type="button"
+              >
+                Cancel
+              </button>
+            </div>
           </div>
           <hr class="mb-6 border-t" />
         </form>
@@ -162,8 +170,8 @@ export default {
         date: null,
         hasPaid: false,
         type: "select",
-        description: ""
-      }
+        description: "",
+      },
     };
   },
   methods: {
@@ -185,10 +193,10 @@ export default {
           date: null,
           hasPaid: false,
           type: "select",
-          description: ""
+          description: "",
         };
       }
-    }
+    },
   },
   mounted() {
     this.$store.dispatch("fetchCategory");
@@ -198,9 +206,9 @@ export default {
     ...mapGetters({
       errorMessage: "errMessage",
       successMessage: "sucMessage",
-      categories: "categoriesList"
-    })
-  }
+      categories: "categoriesList",
+    }),
+  },
 };
 </script>
 <style scoped>
