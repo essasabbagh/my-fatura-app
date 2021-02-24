@@ -10,9 +10,9 @@
       <!-- Col -->
       <div class="w-full lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none">
         <div class="px-8 text-center">
-          <h3 class="pt-4 text-2xl">Add New Bill</h3>
+          <h3 class="text-2xl">Add New Bill</h3>
         </div>
-        <form class="px-8 pt-3 pb-8 mb-4 bg-white rounded">
+        <form class="px-8 pb-8 mb-4 bg-white rounded">
           <!-- Alert Success -->
           <div
             v-if="successMessage"
@@ -47,9 +47,9 @@
             <span class="text-red-800">{{ errorMessage }} </span>
           </div>
           <!-- End Alert Error -->
-          <div class="mb-4">
+          <div class="mb-2">
             <label class="block mb-2 text-gray-700" for="cost">
-              Cost
+              Cost:
             </label>
             <input
               v-model="billInfo.cost"
@@ -59,9 +59,9 @@
               placeholder="Enter cost..."
             />
           </div>
-          <div class="mb-4">
+          <div class="mb-2">
             <label class="block mb-2 text-gray-700" for="date">
-              Date
+              Date:
             </label>
             <input
               v-model="billInfo.date"
@@ -71,9 +71,9 @@
             />
           </div>
           <div
-            class="options md:flex md:space-x-6 items-center text-gray-700 mt-4"
+            class="options md:flex md:space-x-6 items-center text-gray-700 mt-2"
           >
-            <p class="w-1/2 mb-2 md:mb-0">Type of bill</p>
+            <p class="w-1/2 mb-2 md:mb-0">Type of bill:</p>
             <select
               v-model="billInfo.type"
               class="w-full border border-gray-200 p-2 focus:outline-none focus:border-gray-500"
@@ -117,7 +117,7 @@
 
           <div class="text-sm flex flex-col mt-5">
             <label for="description" class="block mb-2 text-gray-700">
-              Description
+              Description:
             </label>
             <textarea
               v-model="billInfo.description"
@@ -128,9 +128,17 @@
           </div>
 
           <div class="mb-6 mt-6 text-center">
+            <a
+              href="/newcategory"
+              class="block w-full px-4 py-2 font-bold text-white bg-yellow-500 rounded-full hover:bg-yellow-600 focus:outline-none focus:shadow-outline transition-all"
+              type="button"
+            >
+              Add New Category <i class="fas fa-external-link-alt"></i>
+            </a>
+            <!-- <hr class="my-5 border-t" /> -->
             <button
               @click="createNewBill"
-              class="w-full px-4 py-2 font-bold text-white bg-teal-500 rounded-full hover:bg-teal-700 focus:outline-none focus:shadow-outline transition-all"
+              class="w-full mt-2 px-4 py-2 font-bold text-white bg-teal-500 rounded-full hover:bg-teal-700 focus:outline-none focus:shadow-outline transition-all"
               type="button"
             >
               Add
