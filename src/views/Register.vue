@@ -1,26 +1,24 @@
 <template>
-  <div class="flex justify-center px-6 my-12 ">
+  <div class="flex justify-center px-6 my-12">
     <!-- Row -->
     <div class="w-full xl:w-3/4 lg:w-11/12 flex">
       <!-- Col -->
       <div
         class="w-full h-auto bg-gray-400 hidden lg:block lg:w-1/2 bg-cover rounded-l-lg"
-        style="background-image: url('https://source.unsplash.com/7XGtYefMXiQ/600x800')"
+        style="
+          background-image: url('https://source.unsplash.com/7XGtYefMXiQ/600x800');
+        "
       ></div>
       <!-- Col -->
       <div class="w-full lg:w-1/2 bg-white p-5 rounded-lg lg:rounded-l-none">
         <div class="px-8 text-center">
           <h3 class="pt-4 text-2xl">Register</h3>
-          <!-- <p class="mb-4 text-sm text-gray-700">
-            We get it, stuff happens. Just enter your email address below and
-            we'll send you a link to reset your password!
-          </p> -->
         </div>
-        <form class="px-8 pt-6 pb-8  bg-white rounded">
+        <form class="px-8 pt-6 pb-8 bg-white rounded">
           <!-- Alert Error -->
           <div
             v-if="errorMessage"
-            class="bg-red-200 px-6 py-4 rounded-md text-sm flex items-center mx-auto "
+            class="bg-red-200 px-6 py-4 rounded-md text-sm flex items-center mx-auto"
           >
             <svg
               viewBox="0 0 24 24"
@@ -94,16 +92,6 @@
               placeholder="Enter password..."
             />
           </div>
-          <div class="mb-4">
-            <label
-              class="block mb-2 text-sm font-bold text-gray-700"
-              for="email"
-            >
-              <input type="checkbox" name="" id="" />
-              Accept every thing
-            </label>
-          </div>
-
           <div class="mb-6 text-center">
             <button
               class="w-full px-4 py-2 font-bold text-white bg-teal-500 rounded-full hover:bg-teal-700 focus:outline-none focus:shadow-outline transition-all"
@@ -134,19 +122,20 @@ import { mapGetters } from "vuex";
 export default {
   data() {
     return {
+      isAccept: true,
       passTwo: "",
-      userInfo: { name: "", email: "", password: "" }
+      userInfo: { name: "", email: "", password: "" },
     };
   },
   methods: {
     signIn() {
       this.$store.dispatch("createUser", this.userInfo);
-    }
+    },
   },
   computed: {
     ...mapGetters({
-      errorMessage: "errMessage"
-    })
+      errorMessage: "errMessage",
+    }),
   },
   watch: {
     passTwo() {
@@ -159,7 +148,7 @@ export default {
       } else {
         this.$store.commit("setError", null);
       }
-    }
-  }
+    },
+  },
 };
 </script>

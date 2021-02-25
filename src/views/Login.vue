@@ -75,7 +75,7 @@
               Create an Account!
             </router-link>
           </div>
-          <div class="text-center">
+          <!-- <div class="text-center">
             <router-link
               to="/reset"
               class="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800 transition-all"
@@ -83,7 +83,7 @@
             >
               Forget your password? Password Reset!
             </router-link>
-          </div>
+          </div> -->
         </form>
       </div>
     </div>
