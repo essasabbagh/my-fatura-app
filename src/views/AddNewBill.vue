@@ -126,7 +126,7 @@
             ></textarea>
           </div>
 
-          <div class="mb-6 mt-6 text-center">
+          <div class="mb-6 mt-5 text-center">
             <a
               href="/newcategory"
               class="block w-full px-4 py-2 font-bold text-white bg-yellow-500 rounded-full hover:bg-yellow-600 focus:outline-none focus:shadow-outline transition-all"
@@ -134,7 +134,7 @@
             >
               Add New Category <i class="fas fa-external-link-alt"></i>
             </a>
-            <!-- <hr class="my-5 border-t" /> -->
+            <hr class="my-2 border-t" />
             <div class="flex flex-row justify-between">
               <button
                 @click="createNewBill"
@@ -152,7 +152,7 @@
               </button>
             </div>
           </div>
-          <hr class="mb-6 border-t" />
+          
         </form>
       </div>
     </div>
