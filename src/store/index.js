@@ -179,7 +179,6 @@ export default createStore({
           .collection("categories")
           .add(cat)
           .then(() => {
-            console.log(state.categories);
             commit("setCategory", cat);
             commit("setSuccess", "Category added Successfuly");
           })
@@ -201,7 +200,7 @@ export default createStore({
               id: doc.id,
               ...doc.data()
             }));
-            console.log("catList", catList);
+            // console.log("catList", catList);
             commit("setCategories", catList);
           });
         console.log(categories);
@@ -217,7 +216,7 @@ export default createStore({
           .collection("bills")
           .add(bill)
           .then(() => {
-            console.log(state.bills);
+            // console.log(state.bills);
             commit("setBill", bill);
             commit("setSuccess", "Bill added Successfuly");
           })
@@ -236,7 +235,7 @@ export default createStore({
               id: doc.id,
               ...doc.data()
             }));
-            console.log("billList", billList);
+            // console.log("billList", billList);
             commit("setBills", billList);
           });
       });
@@ -244,27 +243,6 @@ export default createStore({
 
     fetchPageBills({ state, commit }, obj) {
       fire.Auth.onAuthStateChanged(() => {
-        // if (state.filterValue === "all") {
-        //   var statment = true
-        // } else {
-        //   // page = fire.Users.doc(`${state.userid}`)
-        //   //   .collection("bills")
-        //   //   .where("type", "==", state.filterValue);
-        // }
-
-        // let page = fire.Users.doc(`${state.userid}`).collection("bills");
-        // let temp;
-        // if (filter == "all") {
-        //   temp = "phone";
-        // } else {
-        //   temp = filter;
-        // }
-        // console.log("temp",temp);
-        // .where("type", "==", temp);
-        // .where("type", "==", temp);
-        // const page = fire.Users.doc(`${state.userid}`)
-        //   .collection("bills")
-        //   .where("type", "==", "phone");
         let op, filterValue;
         if (obj.catList == "all") {
           op = "!=";
@@ -273,29 +251,27 @@ export default createStore({
           op = "in";
           filterValue = obj.catList;
         }
-        // console.log(op, filterValue);
         let page = fire.Users.doc(`${state.userid}`)
           .collection("bills")
           .where("type", op, filterValue);
         return page.onSnapshot(snap => {
-          console.log(
-            "length: " +
-              snap.docs.length +
-              " pages: " +
-              Math.ceil(snap.docs.length / 7)
-          );
+          // console.log(
+          //   "length: " +
+          //     snap.docs.length +
+          //     " pages: " +
+          //     Math.ceil(snap.docs.length / 7)
+          // );
           commit("setPages", Math.ceil(snap.docs.length / 7)); // count of pages
-          // commit("setPage", Math.ceil(snap.docs.length / 7)); // current page
 
           page
-            .startAfter(snap.docs[state.lastOfList])
+            .startAt(snap.docs[state.lastOfList])
             .limit(7)
             .onSnapshot(snap => {
               const billList = snap.docs.map(doc => ({
                 id: doc.id,
                 ...doc.data()
               }));
-              console.log("bills", billList);
+              // console.log("bills", billList);
               commit("setPageBills", billList);
             });
         });
@@ -356,9 +332,6 @@ export default createStore({
             case "storage/canceled":
               // User canceled the upload
               break;
-
-            // ...
-
             case "storage/unknown":
               // Unknown error occurred, inspect error.serverResponse
               break;
