@@ -80,14 +80,14 @@ export default {
     selectedPage(op) {
       if (op === "+" && this.currentPage < this.pages) {
         this.currentPage += 1;
-        this.lastOfList += 6;
+        this.lastOfList += 7;
         console.log(this.pages, this.lastOfList);
         this.test();
         this.$store.commit("setPage", this.lastOfList);
         // this.$store.dispatch("fetchPageBills", this.num, this.filteredBill);
       } else if (op === "-" && this.lastOfList > 1) {
         this.currentPage -= 1;
-        this.lastOfList -= 6;
+        this.lastOfList -= 7;
         this.test();
         console.log(this.pages, this.lastOfList);
         this.$store.commit("setPage", this.lastOfList);
