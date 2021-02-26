@@ -20,6 +20,7 @@
         <strong>Firebase: </strong>For Hosting ,Cloud database ,and
         Authentication
       </li>
+      <li class="my-2"><strong>Unsplash: </strong>For Images</li>
     </ul>
   </div>
 </template>
