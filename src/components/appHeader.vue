@@ -27,6 +27,7 @@
       </div>
       <div></div>
       <router-link
+        v-if="isAuth"
         to="/newbill"
         class="absolute text-white bg-red-500 hover:text-teal-50 hover:bg-red-600 hover:shadow-sm transition-all"
         ><i class="fas fa-plus"></i
@@ -40,17 +41,18 @@ import { mapGetters } from "vuex";
 export default {
   computed: {
     ...mapGetters({
-      setting: "allSetting"
+      setting: "allSetting",
+      isAuth: "isAuth",
     }),
     color() {
       return [
         this.setting.color == "teal" ? "bg-teal-500" : "",
         this.setting.color == "red" ? "bg-red-500" : "",
         this.setting.color == "yellow" ? "bg-yellow-500" : "",
-        this.setting.color == "blue" ? "bg-blue-500" : ""
+        this.setting.color == "blue" ? "bg-blue-500" : "",
       ];
-    }
-  }
+    },
+  },
 };
 </script>
 <style>
