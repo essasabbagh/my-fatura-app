@@ -6,7 +6,7 @@
       <div
         class="w-full h-auto bg-gray-400 hidden lg:block lg:w-1/2 bg-cover rounded-l-lg"
         style="
-          background-image: url('https://source.unsplash.com/7XGtYefMXiQ/600x800');
+          background-image: url('https://source.unsplash.com/OQMZwNd3ThU/600x800');
         "
       ></div>
       <!-- Col -->
