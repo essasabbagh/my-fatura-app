@@ -19,22 +19,6 @@ export default {
           show: true,
           position: "right"
         },
-        // annotations: {
-        //   yaxis: [
-        //     {
-        //       y: 222,
-        //       borderColor: "red",
-        //       label: {
-        //         borderColor: "red",
-        //         style: {
-        //           color: "#fff",
-        //           background: "red"
-        //         },
-        //         text: "max limit on 222"
-        //       }
-        //     }
-        //   ]
-        // },
         chart: {
           id: "vuechart-example"
         },
@@ -81,6 +65,7 @@ export default {
         res[month].data.push(parseInt(value.cost));
         return res;
       }, {});
+      console.log(resulte);
       var newRes = resulte.map(e => {
         const dataSum = [e.data.reduce((a, b) => a + b, 0)];
         return { name: e.name, data: dataSum };
@@ -104,7 +89,7 @@ export default {
       for (let i = 0; i < newArr.length; i++) {
         newArr[i].name = monthesNames[i];
       }
-      // console.log(newArr);
+      console.log(newArr);
       // this.options.xaxis.categories = newArr;
     }
   },
