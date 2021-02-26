@@ -2,13 +2,13 @@
   <div class="text-xl">
     <h1 class="text-4xl mt-5">Welcome:</h1>
     <p class="my-5">
-      <strong>My Fatura</strong> is the best application to organize your bills
-      and view all details visually using charts
+      <strong>My Fatura</strong> is the best way to organize and keep tracking
+      off your bills and view all details visually using charts
     </p>
-    <p>In this application I used :</p>
+    <p>The technologies used in the application :</p>
     <ul class="ml-5">
       <li>
-        <strong>Vuejs: </strong>Java script Framwork, including Vue-Router and
+        <strong>Vuejs: </strong>JavaScript Framwork, including Vue-Router and
         Vuex
       </li>
       <li>
