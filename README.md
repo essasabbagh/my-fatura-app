@@ -1,38 +1,28 @@
-# my-fatura-app
-It's simple app to organize bills using graphic charts
-I used Vue 3 ,apexchart , Tailwind 2 
+# my-Fatura-app
+The best way to organize and keep tracking off your bills and view all details visually using charts
 
-## Project setup
-```
-npm install
-```
+## The technologies used in the application :
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### Vuejs: 
+JavaScript Framwork, including Vue-Router and Vuex
+### Tailwindcss: 
+CSS Framwork, For layout styling and color
+### Postcss7: 
+A tool for transforming CSS with JavaScript
+### Font Awesome: 
+The web's most popular icon set and toolkit.
+### ApexChart: 
+A modern charting library, to create beautiful and interactive visualizations for web pages.
+### Firebase: 
+For Hosting ,Cloud database, Storage, and Authentication
+### Unsplash: 
+For Images 
 
 
-var month= ["January","February","March","April","May","June","July",
-            "August","September","October","November","December"];
-var month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul","Aug", "Sep", "Oct", "Nov", "Dec"];
-//used with date.getMonth()
 
-
+<!-- 
 Super Basic Omission Outline style
 https://unsplash.com/photos/rH8O0FHFpfw
+https://unsplash.com/photos/LtNvQHdKkmw
 
-https://source.unsplash.com/rH8O0FHFpfw/600x800
+https://source.unsplash.com/LtNvQHdKkmw/600x800 -->
